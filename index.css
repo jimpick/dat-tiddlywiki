@@ -1,0 +1,21 @@
+body {
+  display: flex;
+  flex-direction: column;
+  font-family: 'Source Sans Pro','PT Sans',Calibri,sans-serif;
+  margin: 0 auto;
+  overflow-x: hidden;
+  max-width: 800px;
+}
+
+* {
+  outline-color: var(--color-green);
+}
+
+.link {
+  text-decoration: none;
+  color: var(--color-green);
+}
+
+.link:focus {
+  outline: 1px dotted currentColor;
+}
