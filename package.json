@@ -1,18 +1,18 @@
 {
-  "name": "dat-shopping-list",
-  "version": "0.0.3",
-  "description": "A demo of Dat multiwriter support (hyperdrive+hyperdb) in a PWA",
+  "name": "dat-tiddlywiki",
+  "version": "0.0.1",
+  "description": "Multiwriter Dat + Tiddlywiki",
   "author": "Jim Pick (@jimpick)",
   "main": "server/index.js",
   "bin": {
-    "dat-shopping-list": "./server/index.js"
+    "dat-tiddlywiki": "./server/index.js"
   },
   "scripts": {
     "start": "node server"
   },
   "repository": {
     "type": "git",
-    "url": "https://github.com/jimpick/dat-shopping-list.git"
+    "url": "https://github.com/jimpick/dat-tiddlywiki.git"
   },
   "dependencies": {
     "brfs": "^1.6.1",
