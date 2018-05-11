@@ -1,0 +1,16 @@
+title: $:/plugins/tiddlywiki/codemirror/styles
+tags: [[$:/tags/Stylesheet]]
+
+/* Make the editor resize to fit its content */
+
+.CodeMirror {
+	height: auto;
+	border: 1px solid #ddd;
+	line-height: 1.5;
+	font-family: {{$:/themes/tiddlywiki/vanilla/settings/editorfontfamily}};
+}
+
+.CodeMirror-scroll {
+	overflow-x: auto;
+	overflow-y: hidden;	
+}

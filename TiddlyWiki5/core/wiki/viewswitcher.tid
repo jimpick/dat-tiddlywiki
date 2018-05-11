@@ -1,0 +1,18 @@
+title: $:/snippets/viewswitcher
+
+\define icon()
+$:/core/images/storyview-$(storyview)$
+\end
+<$linkcatcher to="$:/view">
+<div class="tc-chooser">
+<$list filter="[storyviews[]]" variable="storyview">
+<$set name="cls" filter="[<storyview>prefix{$:/view}]" value="tc-chooser-item tc-chosen" emptyValue="tc-chooser-item"><div class=<<cls>>>
+<$link to=<<storyview>>>
+<$transclude tiddler=<<icon>>/>
+<$text text=<<storyview>>/>
+</$link>
+</div>
+</$set>
+</$list>
+</div>
+</$linkcatcher>

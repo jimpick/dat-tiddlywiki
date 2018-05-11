@@ -1,0 +1,20 @@
+title: $:/core/ui/AdvancedSearch/Filter
+tags: $:/tags/AdvancedSearch
+caption: {{$:/language/Search/Filter/Caption}}
+
+\define lingo-base() $:/language/Search/
+<<lingo Filter/Hint>>
+
+<div class="tc-search tc-advanced-search">
+<$edit-text tiddler="$:/temp/advancedsearch" type="search" tag="input"/>
+<$list filter="[all[shadows+tiddlers]tag[$:/tags/AdvancedSearch/FilterButton]!has[draft.of]]"><$transclude/></$list>
+</div>
+
+<$reveal state="$:/temp/advancedsearch" type="nomatch" text="">
+<$set name="resultCount" value="""<$count filter={{$:/temp/advancedsearch}}/>""">
+<div class="tc-search-results">
+<<lingo Filter/Matches>>
+<$list filter={{$:/temp/advancedsearch}} template="$:/core/ui/ListItemTemplate"/>
+</div>
+</$set>
+</$reveal>

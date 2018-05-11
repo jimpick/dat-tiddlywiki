@@ -1,0 +1,54 @@
+caption: edit-text
+created: 20131024141900000
+modified: 20151224143914772
+tags: Widgets
+title: EditTextWidget
+type: text/vnd.tiddlywiki
+
+! Introduction
+
+The edit text widget provides a user interface in the browser for editing text tiddler fields. The editing element is dynamically bound to the underlying tiddler value: changes to the tiddler are instantly reflected, and any edits are instantly propogated.
+
+By default, applying the EditTextWidget to the `text` field of a tiddler will generates an HTML `<textarea>` element, i.e. a multi-line editor. Applying the EditTextWidget to any other field generates an HTML `<input type="text">` element, a single-line editor. This behaviour can be overridden with the `tag` and `type` attributes.
+
+! Content and Attributes
+
+The content of the `<$edit-text>` widget is ignored.
+
+|!Attribute |!Description |
+|tiddler |The tiddler to edit (defaults to the [[current tiddler|Current Tiddler]]) |
+|field |The field to edit (defaults to `text`). Takes precedence over the `index` attribute |
+|index |The index to edit |
+|default |The default text to be provided when the target tiddler doesn't exist |
+|class |A CSS class to be assigned to the generated HTML editing element |
+|placeholder |Placeholder text to be displayed when the edit field is empty |
+|focusPopup |Title of a state tiddler for a popup that is displayed when the editing element has focus  |
+|focus |Set to "yes" or "true" to automatically focus the editor after creation  |
+|tag |Overrides the generated HTML editing element tag. For a multi-line editor use `tag=textarea`. For a single-line editor use `tag=input` |
+|type |Overrides the generated HTML editing element `type` attribute |
+|size |The size of the input field (in characters) |
+|autoHeight |Either "yes" or "no" to specify whether to automatically resize `textarea` editors to fit their content (defaults to "yes") |
+|minHeight |Minimum height for automatically resized `textarea` editors, specified in CSS length units such as "px", "em" or "%" |
+|rows|Sets the rows attribute of a generated textarea |
+
+! Notes
+
+One trap to be aware of is that the edit text widget //cannot be used// to edit a field of the tiddler that contains it. Each keypress results in the tiddler being re-rendered, which loses the cursor position within the text field.
+
+Instead, place the edit text widget in a [[template|TemplateTiddlers]] that references the tiddler you want to modify.
+
+For example, if you wanted the tiddler GettingStarted to edit the value of the "myconfig" field of the tiddler "AppSettings", you might do so by creating a separate tiddler "ChangeAppSettings" that contains the following:
+
+```
+<$edit-text tiddler="AppSettings" field="myconfig"/>
+```
+
+And reference the template in any other tiddler (e.g. GettingStarted) with `{{ChangeAppSettings}}`.
+
+This works when your use of the tiddler //is not// the AppSettings itself which would cause a recursion problem. In this latter case you have to save the fields to a temporary (or alternative) tiddler (sort of the reverse of above) like so:
+
+```
+<$edit-text tiddler="StoreAppSettings" field="myconfig"/>
+```
+
+In short the EditTextWidget //can not// change properties of the tiddler it is embedded in or part of. It can only change fields of //other// tiddlers. One could use ShadowTiddlers to accomplish the field storage if needed.

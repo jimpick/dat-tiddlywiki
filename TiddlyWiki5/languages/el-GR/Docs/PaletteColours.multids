@@ -1,0 +1,105 @@
+title: $:/language/Docs/PaletteColours/
+
+alert-background: Υπόβαθρο προειδοποίησης
+alert-border: Περίγραμμα προειδοποίησης
+alert-highlight: Επισήμανση προειδοποίησης
+alert-muted-foreground: Βουβό προσκήνιο προειδοποίησης
+background: Γενικό υπόβαθρο
+blockquote-bar: Πλαίσιο Blockquote
+button-background: Υπόβαθρο προεπιλεγμένου κουμπιού
+button-border: Περίγραμμα προεπιλεγμένου κουμπιού
+button-foreground: Χρώμα προεπιλεγμένου κουμπιού
+code-background: Υπόβαθρο κώδικα
+code-border: Περίγραμμα κώδικα
+code-foreground: Προσκήνιο κώδικα
+dirty-indicator: Ένδειξη μη αποθηκευμένων αλλαγών
+download-background: Υπόβαθρο κουμπιού μεταφόρτωσης
+download-foreground: Προσκήνιο κουμπιού μεταφόρτωσης
+dragger-background: Υπόβαθρο Συρσίματος
+dragger-foreground: Προσκήνιο Συρσίματος
+dropdown-background: Υπόβαθρο πτυσώμενου
+dropdown-border: Περίγραμμα πτυσώμενου
+dropdown-tab-background: Υπόβαθρο καρτέλας πτυσώμενου
+dropdown-tab-background-selected: Υπόβαθρο καρτέλας πτυσώμενου για επιλεγμένες καρτέλες
+dropzone-background: Υπόβαθρο ζώνης ρίψης
+external-link-background: Υπόβαθρο εξωτερικού δεσμού
+external-link-background-hover: Υπόβαθρο εξωτερικού δεσμού σε αιώρηση
+external-link-background-visited: Υπόβαθρο εξωτερικού δεσμού που έγινε ήδη επίσκεψη
+external-link-foreground: Προσκήνιο εξωτερικού δεσμού
+external-link-foreground-hover: Προσκήνιο εξωτερικού δεσμού σε αιώρηση
+external-link-foreground-visited: Προσκήνιο εξωτερικού δεσμού που έγινε ήδη επίσκεψη
+foreground: Γενικό προσκήνιο
+message-background: Υπόβαθρο πλαισίου μηνύματος
+message-border: Περίγραμμα πλαισίου μηνύματος
+message-foreground: Προσκήνιο πλαισίου μηνύματος
+modal-backdrop: Σκηνικό Αποκλειστικό
+modal-background: Υπόβαθρο Αποκλειστικό
+modal-border: Περίγραμμα Αποκλειστικό
+modal-footer-background: Υπόβαθρο υποσέλιδου Αποκλειστικό
+modal-footer-border: Περίγραμμα υποσέλιδου Αποκλειστικό
+modal-header-border: Περίγραμμα κεφαλίδας Αποκλειστικό
+muted-foreground: Προσκήνιο γενικό βουβό
+notification-background: Υπόβαθρο ειδοποίησης
+notification-border: Περίγραμμα ειδοποίησης
+page-background: Υπόβαθρο Σελίδας
+pre-background: Υπόβαθρο μορφοποιημένου κώδικα
+pre-border: Περίγραμμα μορφοποιημένου κώδικα
+primary: Γενικά στοιχειώδη
+sidebar-button-foreground: Προσκήνιο κουμπιού πλευρικής γραμμής
+sidebar-controls-foreground: Προσκήνιο αντικειμένων ελέγχου Πλευρικής γραμμής
+sidebar-controls-foreground-hover: Προσκήνιο αντικειμένων ελέγχου πλευρικής γραμμής σε αιώρηση
+sidebar-foreground: Προσκήνιο πλευρικής γραμμής
+sidebar-foreground-shadow: Σκιά προσκήνιου πλευρικής γραμμής
+sidebar-muted-foreground: Προσκήνιο βουβής πλευρικής γραμμής
+sidebar-muted-foreground-hover: Προσκήνιο σε αιώρηση για βουβή πλευρική γραμμή
+sidebar-tab-background: Υπόβαθρο καρτέλας πλευρικής γραμμής
+sidebar-tab-background-selected: Υπόβαθρο καρτέλας πλευρικής γραμμής για επιλεγμένες καρτέλες
+sidebar-tab-border: Περίγραμμα καρτέλας πλευρικής γραμμής
+sidebar-tab-border-selected: Περίγραμμα καρτέλας πλευρικής γραμμής για επιλεγμένες καρτέλες
+sidebar-tab-divider: Διαχωριστής καρτελών πλευρικής γραμμής
+sidebar-tab-foreground: Προσκήνιο καρτέλας πλευρικής γραμμής
+sidebar-tab-foreground-selected: Προσκήνιο καρτέλας πλευρικής γραμμής για επιλεγμένες γραμμές
+sidebar-tiddler-link-foreground: Προσκήνιο  tiddler δεσμού σε πλευρική γραμμή
+sidebar-tiddler-link-foreground-hover: Προσκήνιο δεσμού  tiddler σε πλευρική γραμμή εν αιώρηση
+site-title-foreground: Χρώματα τίτλου ιστότοπου
+static-alert-foreground: Προσκήνιο στατικής προειδοποίησης
+tab-background: Υπόβαθρο καρτέλας
+tab-background-selected: Υπόβαθρο καρτέλας για επιλεγμένες καρτέλες
+tab-border: Περίγραμμα καρτέλας
+tab-border-selected: Περίγραμμα καρτέλας για επιλεγμένες καρτέλες
+tab-divider: Διαχωριστής καρτελών
+tab-foreground: Προσκήνιο καρτέλας
+tab-foreground-selected: Προσκήνιο καρτέλας για επιλεγμένες καρτέλες
+table-border: Περίγραμμα καρτέλας
+table-footer-background: Υπόβαθρο υπότιτλου σε πίνακα
+table-header-background: Υπόβαθρο επικεφαλίδας πίνακα
+tag-background: Υπόβαθρο ετικέτας
+tag-foreground: Προσκήνιο ετικέτας
+tiddler-background: Υπόβαθρο Tiddler
+tiddler-border: Περίγραμμα Tiddler
+tiddler-controls-foreground: Προσκήνιο Tiddler κουμπιών
+tiddler-controls-foreground-hover: Προσκήνιο κουμπιών Tiddler σε αιώρηση
+tiddler-controls-foreground-selected: Προσκήνιο Tiddler κουμπιών για επιλεγμένα κουμπιά
+tiddler-editor-background: Υπόβαθρο επεξεργαστή Tiddler
+tiddler-editor-border: Περίγραμμα επεξεργαστή Tiddler
+tiddler-editor-border-image: Εικόνα περιγράματος επεξεργαστή Tiddler
+tiddler-editor-fields-even: Υπόβαθρο επεξεργαστή Tiddler για ζυγά πεδία
+tiddler-editor-fields-odd: Υπόβαθρο επεξεργαστή Tiddler για μονά πεδία
+tiddler-info-background: Υπόβαθρο πάνελ πληροφοριών του Tiddler
+tiddler-info-border: Περίγραμμα πάνελ πληροφοριών του Tiddler
+tiddler-info-tab-background: Υπόβαθρο καρτέλας πάνελ πληροφοριών του Tiddler
+tiddler-link-background: Υπόβαθρο δεσμού Tiddler
+tiddler-link-foreground: Προσκήνιο δεσμού Tiddler
+tiddler-subtitle-foreground: Προσκήνιο δευτερεύοντος τίτλου Tiddler
+tiddler-title-foreground: Προσκήνιο τίτλου Tiddler
+toolbar-cancel-button: Προσκήνιο κουμπιού 'άκυρο'
+toolbar-close-button: Προσκήνιο  κουμπιού 'κλείσε'
+toolbar-delete-button: Προσκήνιο κουμπιού  'διέγραψε'
+toolbar-done-button: Προσκήνιου κουμπιού  'ολοκλήρωση'
+toolbar-edit-button: Προσκήνιο κουμπιού  'επεξεργασία'
+toolbar-info-button: Προσκήνιο κουμπιού  'πληροφορίες'
+toolbar-new-button: Προσκήνιο κουμπιού 'νέο tiddler'
+toolbar-options-button: Προσκήνιο  κουμπιού 'επιλογές'
+toolbar-save-button: Προσκήνιο κουμπιού  'αποθήκευσης'
+untagged-background: Υπόβαθρο χαπιού χωρίς ετικέτα
+very-muted-foreground: Πολύ βουβό προσκήνιο

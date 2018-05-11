@@ -1,0 +1,14 @@
+{
+	"description": "Demo of TahoeLAFS plugin",
+	"plugins": [
+		"tiddlywiki/tahoelafs"
+	],
+	"themes": [
+		"tiddlywiki/vanilla",
+		"tiddlywiki/snowwhite"
+	],
+	"build": {
+		"index": [
+			"--rendertiddler","$:/core/save/all","tahoelafs.html","text/plain"]
+	}
+}

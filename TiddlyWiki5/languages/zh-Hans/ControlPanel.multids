@@ -1,0 +1,180 @@
+title: $:/language/ControlPanel/
+
+Advanced/Caption: 高级
+Advanced/Hint: 关于此 TiddlyWiki 的内部信息
+Appearance/Caption: 视觉外观
+Appearance/Hint: 定制您的 TiddlyWiki 外观。
+Basics/AnimDuration/Prompt: 动画持续时间：
+Basics/Caption: 基本
+Basics/DefaultTiddlers/BottomHint: 标题含空白时请使用 &#91;&#91;双中括弧&#93;&#93;，或者您可用 <$button set="$:/DefaultTiddlers" setTo="[list[$:/StoryList]]">保留开启中的条目顺序</$button>
+Basics/DefaultTiddlers/Prompt: 首页：
+Basics/DefaultTiddlers/TopHint: 默认开启的条目：
+Basics/Language/Prompt: 您好！当前的语言：
+Basics/NewJournal/Tags/Prompt: 新日志条目的标签
+Basics/NewJournal/Text/Prompt: 新日志条目的内容
+Basics/NewJournal/Title/Prompt: 新日志条目的名称
+Basics/NewTiddler/Title/Prompt: 新条目的名称
+Basics/OverriddenShadowTiddlers/Prompt: 被覆写的默认条目数量：
+Basics/ShadowTiddlers/Prompt: 默认条目数量：
+Basics/Subtitle/Prompt: 副标题：
+Basics/SystemTiddlers/Prompt: 系统条目数量：
+Basics/Tags/Prompt: 标签数量：
+Basics/Tiddlers/Prompt: 一般条目数量：
+Basics/Title/Prompt: 标题：
+Basics/Username/Prompt: 编辑者署名：
+Basics/Version/Prompt: ~TiddlyWiki 版本：
+EditorTypes/Caption: 编辑器类型
+EditorTypes/Editor/Caption: 编辑器
+EditorTypes/Hint: 这些条目决定使用哪个编辑器来编辑特定条目类型。
+EditorTypes/Type/Caption: 类型
+Info/Caption: 信息
+Info/Hint: 有关此 TiddlyWiki 的信息
+KeyboardShortcuts/Add/Prompt: 在此输入快捷键
+KeyboardShortcuts/Add/Caption: 添加快捷键
+KeyboardShortcuts/Caption: 快捷键
+KeyboardShortcuts/Hint: 管理键盘快捷键分配
+KeyboardShortcuts/NoShortcuts/Caption: 尚无指定快捷键
+KeyboardShortcuts/Remove/Hint: 删除快捷键
+KeyboardShortcuts/Platform/All: 所有平台
+KeyboardShortcuts/Platform/Mac: 仅 Macintosh 平台
+KeyboardShortcuts/Platform/NonMac: 仅非 Macintosh 平台
+KeyboardShortcuts/Platform/Linux: 仅 Linux 平台
+KeyboardShortcuts/Platform/NonLinux: 仅非 Linux 平台
+KeyboardShortcuts/Platform/Windows: 仅 Windows 平台
+KeyboardShortcuts/Platform/NonWindows: 仅非 Windows 平台
+LoadedModules/Caption: 已加载的模块
+LoadedModules/Hint: 这些是当前已加载的模块之源码条目。斜体的模块则无源码条目，通常是因为它们是在引导过程中设置。
+Palette/Caption: 调色板
+Palette/Editor/Clone/Caption: 复制
+Palette/Editor/Clone/Prompt: 建议您修改前先复制此默认调色板
+Palette/Editor/Prompt/Modified: 此默认调色板已被修改过
+Palette/Editor/Prompt: 编辑
+Palette/Editor/Reset/Caption: 重置
+Palette/HideEditor/Caption: 隐藏编辑器
+Palette/Prompt: 当前的调色板：
+Palette/ShowEditor/Caption: 显示编辑器
+Plugins/Add/Hint: 从官方插件库安装插件
+Plugins/Add/Caption: 获取更多插件
+Plugins/AlreadyInstalled/Hint: 此插件已经安装版本 <$text text=<<installedVersion>>/>
+Plugins/Caption: 插件
+Plugins/Disable/Caption: 禁用
+Plugins/Disable/Hint: 重新加载页面时禁用此插件
+Plugins/Disabled/Status: (已禁用)
+Plugins/Empty/Hint: 无
+Plugins/Enable/Caption: 启用
+Plugins/Enable/Hint: 重新加载页面时启用此插件
+Plugins/Install/Caption: 安装
+Plugins/Installed/Hint: 当前已安装的插件：
+Plugins/Languages/Caption: 语言
+Plugins/Languages/Hint: 语言包插件
+Plugins/NoInfoFound/Hint: 无 ''"<$text text=<<currentTab>>/>"''
+Plugins/NoInformation/Hint: 未提供信息
+Plugins/NotInstalled/Hint: 尚未安装此插件
+Plugins/OpenPluginLibrary: 开启插件程式库
+Plugins/ClosePluginLibrary: 关闭插件程式库
+Plugins/Plugins/Caption: 插件
+Plugins/Plugins/Hint: 插件
+Plugins/Reinstall/Caption: 重新安装
+Plugins/Themes/Caption: 布景主题
+Plugins/Themes/Hint: 布景主题插件
+Parsing/Caption: 解析
+Parsing/Hint: 在此您可以全域禁用或启用维基解析规则。要使更改生效，请保存并重新加载您的维基。禁用某些解析规则，会妨碍 <$text text="TiddlyWiki"/> 正常运作。可使用[[安全模式|https://tiddlywiki.com/#SafeMode]]恢复正常操作。
+Parsing/Block/Caption: 区块解析规则
+Parsing/Inline/Caption: 内联解析规则
+Parsing/Pragma/Caption: 编译指示解析规则
+Saving/Caption: 保存
+Saving/DownloadSaver/AutoSave/Description: 允许下载保存模块的自动保存
+Saving/DownloadSaver/AutoSave/Hint: 启用下载保存模块的自动保存
+Saving/DownloadSaver/Caption: 下载保存模块
+Saving/DownloadSaver/Hint: 这些设置适用于兼容 HTML5 的下载保存模块
+Saving/General/Caption: 通用
+Saving/General/Hint: 这些设置适用于所有已载入的保存模块
+Saving/Hint: 用于通过保存模块将整个 TiddlyWiki 保存为单个文件的设置
+Saving/TiddlySpot/Advanced/Heading: 高级设置
+Saving/TiddlySpot/BackupDir: 备份文件夹
+Saving/TiddlySpot/Backups: 备份
+Saving/TiddlySpot/Caption: ~TiddlySpot 保存模块
+Saving/TiddlySpot/Description: 这些设置只适用于保存到 http://tiddlyspot.com 或兼容的远程服务器时。
+Saving/TiddlySpot/Filename: 上传文件名
+Saving/TiddlySpot/Heading: ~TiddlySpot
+Saving/TiddlySpot/Hint: //默认之服务器网址 `http://<wikiname>.tiddlyspot.com/store.cgi`，可改为定制之服务器网址，例如 `http://example.com/store.php`。//
+Saving/TiddlySpot/Password: 密码
+Saving/TiddlySpot/ServerURL: 服务器网址
+Saving/TiddlySpot/UploadDir: 上传文件夹
+Saving/TiddlySpot/UserName: 用户
+Settings/AutoSave/Caption: 自动保存
+Settings/AutoSave/Disabled/Description: 不要自动保存变更
+Settings/AutoSave/Enabled/Description: 自动保存变更
+Settings/AutoSave/Hint: 当使用支持的保存模块时，在编辑期间尝试自动保存变更
+Settings/CamelCase/Caption: 驼峰式维基链接
+Settings/CamelCase/Hint: 您可以全域禁用驼峰式短语自动链接。须保存后重新加载，方才生效。
+Settings/CamelCase/Description: 启用自动驼峰式链接
+Settings/Caption: 设置
+Settings/DefaultSidebarTab/Caption: 默认侧边栏页签
+Settings/DefaultSidebarTab/Hint: 指定默认显示的侧边栏页签
+Settings/DefaultMoreSidebarTab/Caption: 更多侧边栏的默认页签
+Settings/DefaultMoreSidebarTab/Hint: 指定默认显示的更多侧栏页签
+Settings/EditorToolbar/Caption: 编辑器工具栏
+Settings/EditorToolbar/Hint: 启用或禁用编辑器工具栏︰
+Settings/EditorToolbar/Description: 显示编辑器工具栏
+Settings/InfoPanelMode/Caption: 条目信息面板模式
+Settings/InfoPanelMode/Hint: 控制条目信息面板何时关闭︰
+Settings/InfoPanelMode/Popup/Description: 条目信息面板自动关闭
+Settings/InfoPanelMode/Sticky/Description: 条目信息面板保持打开状态，直到明确关闭
+Settings/Hint: 这些高级设置让您定制 TiddlyWiki 的行为。
+Settings/LinkToBehaviour/Caption: 条目开启行为
+Settings/LinkToBehaviour/InsideRiver/Hint: 从故事河//中//导航
+Settings/LinkToBehaviour/OutsideRiver/Hint: 从故事河//外//导航
+Settings/LinkToBehaviour/OpenAbove: 开启于当前条目之上
+Settings/LinkToBehaviour/OpenBelow: 开启于当前条目之下
+Settings/LinkToBehaviour/OpenAtTop: 开启于故事河的顶端
+Settings/LinkToBehaviour/OpenAtBottom: 开启于故事河的底部
+Settings/MissingLinks/Caption: 维基链接
+Settings/MissingLinks/Hint: 选择是否要链接到尚未存在的条目
+Settings/MissingLinks/Description: 启用链接到佚失条目
+Settings/NavigationAddressBar/Caption: 网址栏导览
+Settings/NavigationAddressBar/Hint: 在浏览器网址栏导览到条目时的行为：
+Settings/NavigationAddressBar/No/Description: 不更新网址栏
+Settings/NavigationAddressBar/Permalink/Description: 包含目标条目
+Settings/NavigationAddressBar/Permaview/Description: 包括目标条目和当前已开启的条目序列
+Settings/NavigationHistory/Caption: 历史记录导览
+Settings/NavigationHistory/Hint: 当导览到条目时，更新浏览器历史记录：
+Settings/NavigationHistory/No/Description: 不更新历史记录
+Settings/NavigationHistory/Yes/Description: 更新历史记录
+Settings/PerformanceInstrumentation/Caption: 性能检测
+Settings/PerformanceInstrumentation/Hint: 在浏览器的开发人员控制台，显示性能统计数据。需要重新加载才能生效。
+Settings/PerformanceInstrumentation/Description: 启用性能检测
+Settings/ToolbarButtonStyle/Caption: 工具栏按钮样式
+Settings/ToolbarButtonStyle/Hint: 选择工具栏按钮的样式:
+Settings/ToolbarButtonStyle/Styles/Borderless: 无边框
+Settings/ToolbarButtonStyle/Styles/Boxed: 方框
+Settings/ToolbarButtonStyle/Styles/Rounded: 圆形
+Settings/ToolbarButtons/Caption: 工具栏按钮
+Settings/ToolbarButtons/Hint: 默认的工具栏按钮外观：
+Settings/ToolbarButtons/Icons/Description: 包含图标
+Settings/ToolbarButtons/Text/Description: 包含文本
+Settings/TitleLinks/Caption: 条目标题
+Settings/TitleLinks/Hint: 可选地显示条目标题为链接
+Settings/TitleLinks/No/Description: 不显示条目标题为链接
+Settings/TitleLinks/Yes/Description: 显示条目标题为链接
+StoryView/Caption: 查看模式
+StoryView/Prompt: 当前的查看模式：
+Stylesheets/Caption: 样式表
+Stylesheets/Expand/Caption: 全部展开
+Stylesheets/Hint: 这是当前标签为 <<tag "$:/tags/Stylesheet">> 的样式表条目呈现的 CSS
+Stylesheets/Restore/Caption: 复原
+Theme/Caption: 布景主题
+Theme/Prompt: 当前的布景主题：
+TiddlerFields/Caption: 条目栏位
+TiddlerFields/Hint: 这是本维基使用中的所有条目栏位（含系统条目的栏位，但默认条目的栏位除外）。
+Toolbars/Caption: 工具栏
+Toolbars/EditToolbar/Caption: 编辑工具栏
+Toolbars/EditToolbar/Hint: 选择将显示哪些按钮于条目的编辑模式工具栏。拖放可改变顺序。
+Toolbars/Hint: 选择将显示哪些工具栏按钮
+Toolbars/PageControls/Caption: 页面工具栏
+Toolbars/PageControls/Hint: 选择将显示哪些按钮于主页面的工具栏。拖放可改变顺序。
+Toolbars/EditorToolbar/Caption: 编辑器工具栏
+Toolbars/EditorToolbar/Hint: 选择将显示哪些按钮于编辑器工具栏。请注意，某些按钮只会出现在编辑某一类型的条目时。拖放可改变顺序。
+Toolbars/ViewToolbar/Caption: 查看工具栏
+Toolbars/ViewToolbar/Hint: 选择将显示哪些按钮于条目的查看模式工具栏。拖放可改变顺序。
+Tools/Download/Full/Caption: 下载完整副本

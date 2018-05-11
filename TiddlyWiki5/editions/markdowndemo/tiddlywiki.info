@@ -1,0 +1,16 @@
+{
+	"description": "Demo of the Markdown plugin",
+	"plugins": [
+		"tiddlywiki/markdown"
+	],
+	"themes": [
+		"tiddlywiki/vanilla",
+		"tiddlywiki/snowwhite"
+	],
+	"includeWikis": [
+	],
+	"build": {
+		"index": [
+			"--rendertiddler","$:/core/save/all","markdowndemo.html","text/plain"]
+	}
+}

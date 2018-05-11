@@ -1,0 +1,16 @@
+{
+	"description": "Demo of the D3 plugin",
+	"plugins": [
+		"tiddlywiki/d3"
+	],
+	"themes": [
+		"tiddlywiki/vanilla",
+		"tiddlywiki/snowwhite"
+	],
+	"includeWikis": [
+	],
+	"build": {
+		"index": [
+			"--rendertiddler","$:/core/save/all","d3demo.html","text/plain"]
+	}
+}

@@ -1,0 +1,14 @@
+{
+	"description": "Demo of Tank integration",
+	"plugins": [
+		"tiddlywiki/tiddlyweb"
+	],
+	"themes": [
+		"tiddlywiki/vanilla",
+		"tiddlywiki/snowwhite"
+	],
+	"build": {
+		"index": [
+			"--rendertiddler","$:/core/save/all","tw5tank.html","text/plain"]
+	}
+}

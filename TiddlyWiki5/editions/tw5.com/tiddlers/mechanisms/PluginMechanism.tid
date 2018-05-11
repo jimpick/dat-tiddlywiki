@@ -1,0 +1,28 @@
+created: 20130826122000000
+modified: 20161015122959346
+tags: Mechanisms
+title: PluginMechanism
+type: text/vnd.tiddlywiki
+
+! Introduction
+
+[[Plugins]] are bundles of tiddlers that are distributed and managed as a single unit by being packed into a single JSON tiddler. Users can install them with drag and drop, or using the [[plugin library|Installing a plugin from the plugin library]].
+
+The tiddlers within registered plugins behave as ShadowTiddlers: they can be freely overwritten by creating a tiddler with the same title, but deleting that tiddler restores the underlying tiddler value from the plugin.
+
+Plugins have a `plugin-type` field that may take the following values:
+
+* `plugin` //(default)// - a plain plugin
+* `theme` - a theme plugin (see ThemeMechanism)
+* `language` - for translations only
+
+Plugins can be used to package ordinary content, or can include JavaScript [[modules|Modules]] that extend and enhance the core TiddlyWiki5 functionality.
+
+Plugins conventionally have a title of the form `$:/plugins/publisher/name`. Plugins that are part of the core TiddlyWiki distribution have titles of the form `$:/plugins/tiddlywiki/name`.
+
+When [[running TiddlyWiki under Node.js|TiddlyWiki on Node.js]], plugins can also be stored as individual tiddler files in [[PluginFolders]].
+
+! More information
+
+<<list-links "[tag[PluginMechanism]]">>
+

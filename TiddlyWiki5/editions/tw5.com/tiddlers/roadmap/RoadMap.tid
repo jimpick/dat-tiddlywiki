@@ -1,0 +1,17 @@
+created: 20130823203800000
+modified: 20160418123722695
+tags: About
+title: RoadMap
+type: text/vnd.tiddlywiki
+
+There are still some areas of TiddlyWiki that have not been fully developed beyond the experimental stage:
+
+* Multiple users with the client-server configuration
+* Smartphone user experience
+* New tiddler manager, including bulk operations like search and replace
+* Federation that can run in the browser or under Node.js
+* Improved editions
+* Improved support for third party plugin libraries
+
+Also see the issues list on GitHub: https://github.com/Jermolene/TiddlyWiki5
+
