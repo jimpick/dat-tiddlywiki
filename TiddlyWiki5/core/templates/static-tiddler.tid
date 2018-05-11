@@ -1,5 +1,0 @@
-title: $:/core/templates/static-tiddler
-
-<a name=<<currentTiddler>>>
-<$transclude tiddler="$:/core/ui/ViewTemplate"/>
-</a>

@@ -1,8 +1,0 @@
-title: $:/core/sl-SI/readme
-
-Ta vtičnik vsebuje osnovne TiddlyWiki komponente, ki jih sestavljajo:
-
-* moduli JavaScript kode.
-* ikone
-* predloge, potrebne za ustvarjanje vmesnika TiddlyWiki
-* prevodna besedila v britanska angleščina (' en-GB''), ki jih uporablja jedro Tiddlywiki.

@@ -1,2 +1,0 @@
-title: $:/config/tiddlyweb/host
-text: $protocol$//$host$/MyApp/

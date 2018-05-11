@@ -1,8 +1,0 @@
-title: $:/language/Help/verbose
-description: Activa resultatos con texto extense
-
-Activa resultatos con texto extense, utile pro trovar errores
-
-```
---verbose
-```

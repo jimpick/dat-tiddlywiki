@@ -1,5 +1,0 @@
-title: $:/core/Filters/StoryList
-tags: $:/tags/Filter
-filter: [list[$:/StoryList]] -$:/AdvancedSearch
-description: {{$:/language/Filters/StoryList}}
-

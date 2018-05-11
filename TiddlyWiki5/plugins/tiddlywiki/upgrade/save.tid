@@ -1,3 +1,0 @@
-title: $:/plugins/tiddlywiki/upgrade/save
-
-<$button message="tm-download-file" param="$:/plugins/tiddlywiki/upgrade/save-tiddler-filter" class="tc-btn-big-green">Save upgraded ~TiddlyWiki file {{$:/core/images/save-button}}</$button>

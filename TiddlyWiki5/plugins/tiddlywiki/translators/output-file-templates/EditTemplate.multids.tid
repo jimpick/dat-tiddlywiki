@@ -1,3 +1,0 @@
-title: $:/plugins/tiddlywiki/translators/templates/EditTemplate.multids
-
-{{$:/language/EditTemplate/||$:/plugins/tiddlywiki/translators/templates/multids}}

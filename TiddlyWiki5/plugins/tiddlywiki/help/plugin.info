@@ -1,7 +1,0 @@
-{
-	"title": "$:/plugins/tiddlywiki/help",
-	"description": "Help panel for TiddlyWiki",
-	"author": "JeremyRuston",
-	"core-version": ">=5.0.0",
-	"list": "readme"
-}

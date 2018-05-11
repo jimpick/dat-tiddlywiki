@@ -1,8 +1,0 @@
-title: $:/language/Help/unpackplugin
-description: Extrahe le notas utile de un extension
-
-Extrahe le notas utile de un extension, creante los como notas ordinari:
-
-```
---unpackplugin <title>
-```

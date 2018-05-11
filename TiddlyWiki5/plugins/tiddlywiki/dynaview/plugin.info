@@ -1,7 +1,0 @@
-{
-	"title": "$:/plugins/tiddlywiki/dynaview",
-	"description": "Dynamic scrolling and zooming effects",
-	"author": "JeremyRuston",
-	"core-version": ">=5.0.0",
-	"list": "readme docs examples config"
-}

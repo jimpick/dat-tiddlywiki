@@ -1,7 +1,0 @@
-{
-	"title": "$:/plugins/tiddlywiki/jasmine",
-	"description": "Jasmine: testing framework",
-	"author": "JeremyRuston",
-	"core-version": ">=5.0.0",
-	"list": "readme"
-}

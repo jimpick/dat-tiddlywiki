@@ -1,5 +1,0 @@
-title: $:/language/Snippets/ListByTag
-tags: $:/tags/TextEditor/Snippet
-caption: List tiddlere efter tag
-
-<<list-links "[tag[task]sort[title]]">>

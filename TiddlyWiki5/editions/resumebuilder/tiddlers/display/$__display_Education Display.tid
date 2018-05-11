@@ -1,5 +1,0 @@
-section: Education
-tags: [[Section Display]]
-title: $:/display/Education Display
-
-<$transclude tiddler=GenericSectionDisplayTemplate mode=block/>

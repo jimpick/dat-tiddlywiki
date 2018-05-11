@@ -1,5 +1,0 @@
-order: 2
-show: true
-template: $:/template/ContactInformationTemplate
-title: $:/settings/Default/Contact Information Display
-

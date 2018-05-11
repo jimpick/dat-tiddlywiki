@@ -1,5 +1,0 @@
-title: $:/core/ui/ControlPanel/Theme
-tags: $:/tags/ControlPanel/Appearance
-caption: {{$:/language/ControlPanel/Theme/Caption}}
-
-{{$:/snippets/themeswitcher}}

@@ -1,3 +1,0 @@
-title: $:/config/SaveTrailPlugin/sync-drafts-filter
-
-[is[tiddler]has[draft.of]]

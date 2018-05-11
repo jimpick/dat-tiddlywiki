@@ -1,7 +1,0 @@
-{
-	"title": "$:/plugins/tiddlywiki/pluginlibrary",
-	"description": "Plugin library builder",
-	"author": "JeremyRuston",
-	"core-version": ">=5.0.0",
-	"list": "readme"
-}

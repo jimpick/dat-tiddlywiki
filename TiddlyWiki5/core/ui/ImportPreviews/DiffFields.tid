@@ -1,5 +1,0 @@
-title: $:/core/ui/ImportPreviews/DiffFields
-tags: $:/tags/ImportPreview
-caption: {{$:/language/Import/Listing/Preview/DiffFields}}
-
-<$macrocall $name="compareTiddlers" sourceTiddlerTitle=<<payloadTiddler>> destTiddlerTitle=<<currentTiddler>> destSubTiddlerTitle=<<payloadTiddler>> exclude="text"/>

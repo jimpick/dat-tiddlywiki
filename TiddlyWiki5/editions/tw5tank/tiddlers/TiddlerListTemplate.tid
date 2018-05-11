@@ -1,3 +1,0 @@
-title: TiddlerListTemplate
-
-<$view field="title" format="link"/> <small><$view field="type"/></small>

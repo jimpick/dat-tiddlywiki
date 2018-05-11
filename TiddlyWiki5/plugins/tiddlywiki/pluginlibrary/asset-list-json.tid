@@ -1,4 +1,0 @@
-title: $:/plugins/tiddlywiki/pluginlibrary/asset-list-json
-
-`var assetList = `<$view tiddler="$:/UpgradeLibrary/List"/>`;
-`

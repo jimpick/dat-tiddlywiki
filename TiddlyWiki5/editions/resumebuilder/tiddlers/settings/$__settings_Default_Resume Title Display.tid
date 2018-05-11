@@ -1,5 +1,0 @@
-order: 1
-show: true
-template: $:/template/ResumeTitleTemplate2
-title: $:/settings/Default/Resume Title Display
-

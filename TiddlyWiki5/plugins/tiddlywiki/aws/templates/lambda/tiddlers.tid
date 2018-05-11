@@ -1,5 +1,0 @@
-title: $:/plugins/tiddlywiki/aws/lambda/tiddlers
-
-`
-var lambdaTiddlers = `<$text text=<<jsontiddlers "[all[tiddlers]]">>/>`;
-`

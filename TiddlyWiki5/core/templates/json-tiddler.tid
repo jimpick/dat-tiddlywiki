@@ -1,7 +1,0 @@
-title: $:/core/templates/json-tiddler
-
-<!--
-
-This template is used for saving tiddlers as raw JSON
-
---><$text text=<<jsontiddler>>/>

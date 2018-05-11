@@ -1,8 +1,0 @@
-title: $:/language/Help/verbose
-description: Activa o modo de exibição relatório verboso
-
-Activa a exibição relatório verboso, útil para correcção de erros
-
-```
---verbose
-```

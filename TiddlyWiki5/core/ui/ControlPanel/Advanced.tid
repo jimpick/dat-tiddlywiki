@@ -1,9 +1,0 @@
-title: $:/core/ui/ControlPanel/Advanced
-tags: $:/tags/ControlPanel/Info
-caption: {{$:/language/ControlPanel/Advanced/Caption}}
-
-{{$:/language/ControlPanel/Advanced/Hint}}
-
-<div class="tc-control-panel">
-<<tabs "[all[shadows+tiddlers]tag[$:/tags/ControlPanel/Advanced]!has[draft.of]]" "$:/core/ui/ControlPanel/TiddlerFields">>
-</div>

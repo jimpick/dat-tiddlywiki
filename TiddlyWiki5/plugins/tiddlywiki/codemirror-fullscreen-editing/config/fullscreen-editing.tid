@@ -1,7 +1,0 @@
-title: $:/config/codemirror/fullscreen
-extend: extraKeys
-type: json
-
-{
-	"F11": "togglefullscreen"
-}

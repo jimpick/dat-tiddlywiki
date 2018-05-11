@@ -1,7 +1,0 @@
-created: 20180307153530187
-modified: 20180307153530187
-tags: Learning
-title: TaskManagementExampleDraggableTemplate
-type: text/vnd.tiddlywiki
-
-<$checkbox tag="done"> <$link to={{!!title}}><$view field="title"/></$link></$checkbox>

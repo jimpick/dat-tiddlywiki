@@ -1,5 +1,0 @@
-title: $:/language/Snippets/ListByTag
-tags: $:/tags/TextEditor/Snippet
-caption: Λίστα από tiddlers μέσω ετικέτας
-
-<<list-links "[tag[task]sort[title]]">>

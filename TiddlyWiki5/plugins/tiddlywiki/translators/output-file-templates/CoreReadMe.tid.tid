@@ -1,3 +1,0 @@
-title: $:/plugins/tiddlywiki/translators/templates/CoreReadMe.tid
-
-{{$:/core/readme||$:/plugins/tiddlywiki/translators/templates/tid}}

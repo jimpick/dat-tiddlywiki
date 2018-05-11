@@ -1,6 +1,0 @@
-section: Objective
-tags: [[Section Display]]
-template: $:/template/ObjectiveTemplate
-title: $:/display/Objective Display
-
-<$transclude tiddler=GenericSectionDisplayTemplate mode=block/>

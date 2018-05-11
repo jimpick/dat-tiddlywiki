@@ -1,3 +1,0 @@
-title: $:/plugins/tiddlywiki/dynaview/examples
-
-<<tabs "[all[tiddlers+shadows]tag[$:/tags/dynaviewExamples]!has[draft.of]]" "$:/plugins/tiddlywiki/dynaview/examples/progressive-text">>

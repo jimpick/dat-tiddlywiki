@@ -1,7 +1,0 @@
-title: $:/config/codemirror/autocomplete
-extend: extraKeys
-type: json
-
-{
-	"Ctrl-Space": "autocomplete"
-}

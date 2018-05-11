@@ -1,8 +1,0 @@
-{
-	"title": "$:/languages/da-DK",
-	"name": "da-DK",
-	"plugin-type": "language",
-	"description": "Danish (Denmark)",
-	"author": "Birthe C",
-	"core-version": ">=5.0.8"
-}
