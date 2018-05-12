@@ -30,8 +30,8 @@ router.get('/', csp, serveIndex)
 router.get('/index.html', csp, serveIndex)
 router.get('/create', csp, serveIndex)
 router.get('/add-link', csp, serveIndex)
+router.all('/doc/:key/tw*', tiddlyWiki)
 router.get('/doc/:key', csp, serveIndex)
-router.get('/doc/:key/tw', tiddlyWiki)
 
 const attachWebsocket = dbGateway(router)
 

@@ -23,72 +23,16 @@ const prefix = css`
       margin: 1rem;
     }
 
-    ul {
-      padding: 0 0.3rem 0.5rem 0.3rem;
-    }
-
-    li {
-      list-style-type: none;
-      border: 1px solid var(--color-neutral-20);
-      border-radius: 0.5rem;
-      margin: 0 0 0.5rem 0;
-      padding: 0 0.5rem;
-      min-height: 3rem;
-      cursor: pointer;
-      font-size: 1.2rem;
+    .tiddlyButton {
       display: flex;
+      height: 8rem;
       align-items: center;
+      justify-content: center;
 
-      &:focus {
-        outline: none;
-        border-color: var(--color-green);
+      button {
+        font-size: 1.2rem;
+        padding: 1.3rem;
       }
-
-      input[type="checkbox"] {
-        pointer-events: none;
-        margin: 0 0.4rem;
-      }
-
-      .text {
-        flex: 1;
-        overflow: hidden;
-        text-overflow: ellipsis;
-        margin: 0.5rem;
-      }
-
-      .text[data-bought="true"] {
-        text-decoration: line-through;
-      }
-
-      .delete {
-        opacity: 0.6;
-        font-size: 1.5rem;
-        font-weight: 900;
-        color: var(--color-green);
-        flex: 0 0;
-        padding: 0.6rem 0.6rem;
-      }
-
-      &.addGroceryItem {
-        border-color: transparent;
-
-        form {
-          display: flex;
-          margin: 0 0 0 1.5rem;
-          width: 100%;
-
-          input[type="text"] {
-            font-size: 1.2rem;
-            flex: 1;
-            width: 100%;
-          }
-
-          input[type="submit"] {
-            margin-left: 0.6rem;
-          }
-        }
-      }
-
     }
 
     .bottomNav {
@@ -138,7 +82,9 @@ function shoppingListView (state, emit) {
     <div>
       ${shoppingListTitle(state, emit)}
       ${writeStatus(state, emit)}
-      ${button.button('View TiddlyWiki', openTiddlyWiki)}
+      <div class="tiddlyButton">
+        ${button.button('View TiddlyWiki', openTiddlyWiki)}
+      </div>
     </div>
   `)
 
