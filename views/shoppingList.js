@@ -104,7 +104,7 @@ const prefix = css`
 module.exports = shoppingListView
 
 function shoppingListView (state, emit) {
-  emit('DOMTitleChange', 'Dat Shopping List - ' + state.docTitle)
+  emit('DOMTitleChange', 'Dat TiddlyWiki - ' + state.docTitle)
 
   function layout (inner) {
     return html`
@@ -134,59 +134,18 @@ function shoppingListView (state, emit) {
   }
   if (state.loading) return layout('Loading...')
 
-  const items = state.shoppingList
-    .sort((a, b) => a.dateAdded - b.dateAdded)
-    .map(item => {
-      const id = item.file.replace('.json', '')
-      return html`
-        <li tabindex="0" role="button" onclick=${toggle.bind(item)} onkeydown=${keydown}>
-          <input type="checkbox" checked=${item.bought} tabindex="-1" id=${id}>
-          <div class="text" data-bought=${item.bought}>${item.name}</div>
-          <div class="delete" onclick=${remove.bind(item)} tabindex="0">${raw('&#x00d7;')}</div>
-        </li>
-      `
-
-      function toggle () {
-        emit('toggleBought', this.file)
-      }
-
-      function remove (event) {
-        emit('remove', this.file)
-        event.stopPropagation()
-      }
-    })
-  const addItemInput = html`<input type="text">`
-  addItemInput.isSameNode = function (target) {
-    return (target && target.nodeName && target.nodeName === 'INPUT')
-  }
-
-  items.push(html`
-    <li class="addGroceryItem" id="addItem">
-      <form onsubmit=${submitAddItem}>
-        ${addItemInput}
-        ${button.submit('Add')}
-      </form>
-    </li>
-  `)
-  function submitAddItem (event) {
-    const input = event.target.querySelector('input')
-    const name = input.value.trim()
-    if (name !== '') emit('addItem', name)
-    input.value = ''
-    event.preventDefault()
-    event.target.scrollIntoView()
-  }
-  const noItems = state.shoppingList.length === 0 ? html`<p>No items.</p>` : null
   return layout(html`
     <div>
       ${shoppingListTitle(state, emit)}
       ${writeStatus(state, emit)}
-      <ul>
-        ${items}
-      </ul>
-      ${noItems}
+      ${button.button('View TiddlyWiki', openTiddlyWiki)}
     </div>
   `)
+
+  function openTiddlyWiki (event) {
+    const url = `/doc/${state.key.toString('hex')}/tw`
+    location.href = url
+  }
 
   function deleteList (event) {
     const confirm = window.confirm('Delete this list?')
