@@ -1,3 +1,6 @@
+const fs = require('fs')
+const path = require('path')
+const mkdirp = require('mkdirp')
 const tiddlywikiBoot = require('tiddlywiki/boot/boot')
 
 // See: https://gist.github.com/Arlen22/bbd852f68e328165e49f
@@ -6,8 +9,12 @@ const wikis = {}
 
 function getWiki(key) {
   if (wikis[key]) return wikis[key]
+  const wikiPath = path.join('.data', 'wikis', key)
+  mkdirp.sync(wikiPath)
+  const tiddlyInfo = fs.readFileSync('tiddlywikiBase/tiddlywiki.info')
+  fs.writeFileSync(path.join(wikiPath, 'tiddlywiki.info'), tiddlyInfo)
   $tw = tiddlywikiBoot.TiddlyWiki()
-  $tw.boot.argv = ['tiddlywikiBase']
+  $tw.boot.argv = [wikiPath]
   $tw.boot.boot()
   $tw.wiki.addTiddler({
     text: `$protocol$//$host$/doc/${key}/tw/`,
