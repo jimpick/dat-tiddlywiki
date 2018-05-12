@@ -13,7 +13,6 @@ const csp = require('./middleware/csp')
 const makeServiceWorker = require('./makeServiceWorker')
 const makeImages = require('./makeImages')
 const periodicRestart = require('./periodicRestart')
-// const tiddlywikiBoot = require('tiddlywiki/boot/boot')
 const tiddlyWiki = require('./tiddlyWiki')
 
 require('events').prototype._maxListeners = 100
@@ -70,17 +69,6 @@ function runBudo () {
     periodicRestart(24 * 60) // Daily
   })
 }
-
-/*
-function runTiddlyWiki () {
-  const $tw = tiddlywikiBoot.TiddlyWiki()
-  $tw.boot.argv = [
-    'tiddlywikiBase',
-    '--server'
-  ]
-  $tw.boot.boot()
-}
-*/
 
 mkdirp.sync('.data/img')
 
