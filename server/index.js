@@ -13,6 +13,7 @@ const makeServiceWorker = require('./makeServiceWorker')
 const makeImages = require('./makeImages')
 const periodicRestart = require('./periodicRestart')
 const csp = require('./csp')
+const tiddlywikiBoot = require('tiddlywiki/boot/boot')
 
 require('events').prototype._maxListeners = 100
 
@@ -68,6 +69,15 @@ function runBudo () {
   })
 }
 
+function runTiddlyWiki () {
+  const $tw = tiddlywikiBoot.TiddlyWiki()
+  $tw.boot.argv = [
+    'tiddlywikiBase',
+    '--server'
+  ]
+  $tw.boot.boot()
+}
+
 mkdirp.sync('.data/img')
 
 makeServiceWorker(err => {
@@ -80,6 +90,7 @@ makeServiceWorker(err => {
       console.error(err)
       throw err
     }
-    runBudo()
+    // runBudo()
+    runTiddlyWiki()
   })
 })
