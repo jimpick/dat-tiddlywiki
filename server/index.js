@@ -9,10 +9,12 @@ const mkdirp = require('mkdirp')
 const dbGateway = require('./dbGateway')
 const serviceWorkerNoCache = require('./middleware/serviceWorkerNoCache')
 const redirectToHttps = require('./middleware/redirectToHttps')
+const csp = require('./middleware/csp')
 const makeServiceWorker = require('./makeServiceWorker')
 const makeImages = require('./makeImages')
 const periodicRestart = require('./periodicRestart')
-const csp = require('./csp')
+// const tiddlywikiBoot = require('tiddlywiki/boot/boot')
+const tiddlyWiki = require('./tiddlyWiki')
 
 require('events').prototype._maxListeners = 100
 
@@ -30,6 +32,7 @@ router.get('/index.html', csp, serveIndex)
 router.get('/create', csp, serveIndex)
 router.get('/add-link', csp, serveIndex)
 router.get('/doc/:key', csp, serveIndex)
+router.get('/doc/:key/tw', tiddlyWiki)
 
 const attachWebsocket = dbGateway(router)
 
@@ -68,6 +71,17 @@ function runBudo () {
   })
 }
 
+/*
+function runTiddlyWiki () {
+  const $tw = tiddlywikiBoot.TiddlyWiki()
+  $tw.boot.argv = [
+    'tiddlywikiBase',
+    '--server'
+  ]
+  $tw.boot.boot()
+}
+*/
+
 mkdirp.sync('.data/img')
 
 makeServiceWorker(err => {
@@ -81,5 +95,6 @@ makeServiceWorker(err => {
       throw err
     }
     runBudo()
+    // runTiddlyWiki()
   })
 })

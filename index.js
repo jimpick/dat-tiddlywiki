@@ -16,8 +16,8 @@ css('./index.css')
 
 const app = choo()
 
-// app.use(require('choo-service-worker/clear')())
-app.use(chooServiceWorker())
+app.use(require('choo-service-worker/clear')())
+// app.use(chooServiceWorker())
 app.use((state, emitter) => {
   emitter.on('sw:installed', () => { console.log('sw:installed') })
   emitter.on('sw:updated', () => { console.log('sw:updated') })
@@ -36,8 +36,8 @@ app.use((state, emitter) => {
 })
 
 app.use(state => {
-  state.glitchAppName = 'dat-shopping-list'
-  state.gitHubRepoName = 'jimpick/dat-shopping-list'
+  state.glitchAppName = 'dat-tiddlywiki-dev'
+  state.gitHubRepoName = 'jimpick/dat-tiddlywiki'
   state.devMode = false
   state.devLabel = 'e'
 })
