@@ -11,7 +11,7 @@ function getWiki(key) {
   if (wikis[key]) return wikis[key]
   const wikiPath = path.join('.data', 'wikis', key)
   mkdirp.sync(wikiPath)
-  const tiddlyInfo = fs.readFileSync('tiddlywikiBase/tiddlywiki.info')
+  const tiddlyInfo = fs.readFileSync('tiddlywiki/tiddlywiki.info')
   fs.writeFileSync(path.join(wikiPath, 'tiddlywiki.info'), tiddlyInfo)
   $tw = tiddlywikiBoot.TiddlyWiki()
   $tw.boot.argv = [wikiPath]
@@ -42,7 +42,6 @@ function getWiki(key) {
 }
 
 function tiddlyWikiRequest (req, res, next) {
-  console.log('Jim tiddlyWikiRequest', req.url, req.params)
   const wiki = getWiki(req.params.key)
   req.url = req.url.replace(/^.*\/tw\/?/, '/')
   wiki.requestHandler(req, res, next)
