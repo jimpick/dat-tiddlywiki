@@ -8,6 +8,9 @@ const tiddlywikiBoot = require('tiddlywiki/boot/boot')
 process.env['TIDDLYWIKI_THEME_PATH'] = path.resolve(
   __dirname, '..', 'tiddlywiki', 'themes'
 )
+process.env['TIDDLYWIKI_PLUGIN_PATH'] = path.resolve(
+  __dirname, '..', 'tiddlywiki', 'plugins'
+)
 
 const wikis = {}
 
