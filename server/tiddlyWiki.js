@@ -5,6 +5,10 @@ const tiddlywikiBoot = require('tiddlywiki/boot/boot')
 
 // See: https://gist.github.com/Arlen22/bbd852f68e328165e49f
 
+process.env['TIDDLYWIKI_THEME_PATH'] = path.resolve(
+  __dirname, '..', 'tiddlywiki', 'themes'
+)
+
 const wikis = {}
 
 function getWiki(key) {

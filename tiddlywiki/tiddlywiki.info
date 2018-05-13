@@ -7,7 +7,7 @@
     ],
     "themes": [
         "tiddlywiki/vanilla",
-        "snowwhite"
+        "snowwhite2"
     ],
     "build": {
         "index": [
