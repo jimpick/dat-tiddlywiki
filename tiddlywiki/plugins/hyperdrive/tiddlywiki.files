@@ -1,7 +1,7 @@
 {
   "tiddlers": [
     {
-      "file": "hyperdriveadaptor.js",
+      "file": "../../../.data/tiddlywiki-plugins/hyperdrive/hyperdriveadaptor.js",
       "fields": {
         "type": "application/javascript",
         "title": "$:/plugins/hyperdrive/hyperdriveadaptor.js",

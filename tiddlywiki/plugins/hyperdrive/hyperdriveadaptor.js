@@ -28,31 +28,19 @@ Get an array of skinny tiddler fields from the archive
 */
 
 const tiddlers = [
-  /*
-  {
-    title: "Test 1",
-    created: "20180513054310008",
-    modified: "20180513054324218",
-    tags:"",
-    type: "text/vnd.tiddlywiki",
-    revision: 0
-  }
-  */
 ]
 
 HyperdriveAdaptor.prototype.getSkinnyTiddlers = function(callback) {
   var self = this;
   if (tiddlers.length === 0) {
-    setTimeout(() => {
-      tiddlers.push({
-        title: "Banana Ham Loaf",
-        created: "20180514211415972",
-        modified: "20180514211617113",
-        tags: "",
-        type: "text/vnd.tiddlywiki",
-        revision: 0
-      })
-    }, 500)
+    tiddlers.push({
+      title: "Banana Ham Loaf",
+      created: "20180514211415972",
+      modified: "20180514211617113",
+      tags: "",
+      type: "text/vnd.tiddlywiki",
+      revision: 0
+    })
   }
   console.log('Jim getSkinnyTiddlers', tiddlers)
   callback(null,tiddlers);

@@ -12,6 +12,7 @@ const redirectToHttps = require('./middleware/redirectToHttps')
 const csp = require('./middleware/csp')
 const makeServiceWorker = require('./makeServiceWorker')
 const makeImages = require('./makeImages')
+const makeTiddlyWikiPlugins = require('./makeTiddlyWikiPlugins')
 const periodicRestart = require('./periodicRestart')
 const tiddlyWiki = require('./tiddlyWiki')
 
@@ -73,16 +74,19 @@ function runBudo () {
 mkdirp.sync('.data/img')
 
 makeServiceWorker(err => {
+  checkError(err)
+  makeImages(err => {
+    checkError(err)
+    makeTiddlyWikiPlugins(err => {
+      checkError(err)
+      runBudo()
+    })
+  })
+})
+
+function checkError (err) {
   if (err) {
     console.error(err)
     throw err
   }
-  makeImages(err => {
-    if (err) {
-      console.error(err)
-      throw err
-    }
-    runBudo()
-    // runTiddlyWiki()
-  })
-})
+}
