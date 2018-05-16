@@ -1,7 +1,8 @@
 {
     "description": "Basic client-server edition",
     "plugins": [
-        "tiddlyweb2",
+        "hyperdrive",
+        "tiddlyweb2x",
         "tiddlywiki/filesystem",
         "tiddlywiki/highlight"
     ],

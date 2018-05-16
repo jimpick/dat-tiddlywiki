@@ -142,6 +142,7 @@ Get an array of skinny tiddler fields from the server
 */
 TiddlyWebAdaptor.prototype.getSkinnyTiddlers = function(callback) {
 	var self = this;
+	console.log('Jim getSkinnyTiddlers 1')
 	$tw.utils.httpRequest({
 		url: this.host + "recipes/" + this.recipe + "/tiddlers.json",
 		callback: function(err,data) {
@@ -151,6 +152,26 @@ TiddlyWebAdaptor.prototype.getSkinnyTiddlers = function(callback) {
 			}
 			// Process the tiddlers to make sure the revision is a string
 			var tiddlers = JSON.parse(data);
+			console.log('Jim getSkinnyTiddlers 2', tiddlers)
+			tiddlers = [
+				{
+					title: "Banana Ham Loaf",
+					created: "20180514211415972",
+					modified: "20180514211617113",
+					tags: "",
+					type: "text/vnd.tiddlywiki",
+					revision: 0
+				},
+				{
+					title: "Test 1",
+					created: "20180513054310008",
+					modified: "20180513054324218",
+					tags:"",
+					type: "text/vnd.tiddlywiki",
+					revision: 0
+				}
+			]
+			console.log('Jim getSkinnyTiddlers 3', tiddlers)
 			for(var t=0; t<tiddlers.length; t++) {
 				tiddlers[t] = self.convertTiddlerFromTiddlyWebFormat(tiddlers[t]);
 			}
@@ -190,7 +211,21 @@ TiddlyWebAdaptor.prototype.saveTiddler = function(tiddler,callback) {
 Load a tiddler and invoke the callback with (err,tiddlerFields)
 */
 TiddlyWebAdaptor.prototype.loadTiddler = function(title,callback) {
+	console.log('Jim loadTiddler 1', title)
 	var self = this;
+	if (title === 'Banana Ham Loaf') {
+		const fakeTiddler = {
+			"title":"Banana Ham Loaf",
+			"created":"20180514211415972",
+			"modified":"20180514211617113",
+			"tags":"",
+			"type":"text/vnd.tiddlywiki",
+			"text":"This makes a nice luncheon dish served cold.\n\n* 1 egg\n* 1/2 cup apple cider\n* 1 teaspoon coriander\n* 3 tablespoons green tomato piccalilli relish or dill pickle relish\n* 1 pound coarsely ground lean ham\n* 1 cup cornbread stuffing mix\n* 2 large bananas\n* 1/4 cup honey mustard\n\nPreheat oven to 325° F. Lightly oil a 9 x 5 inch loaf pan.\n\nIn a large mixing bowl and using a fork, beat egg, cider, coriander, and relish until blended. \n\nAdd ham and cornbread mix. Stir with fork to mix completely. Divide in half.\n\nPack one half into prepared loaf pan. Place whole peeled bananas gently. Spread with honey mustard.\n\nBake approximately 45 minutes or until ham is bubbly and slightly browned. Remove pan from oven and allow to cool slightly before slicing.\n\n''Yield: 6 to 8 servings''\n",
+			"revision":0
+		}
+		callback(null,self.convertTiddlerFromTiddlyWebFormat(fakeTiddler));
+		return
+	}
 	$tw.utils.httpRequest({
 		url: this.host + "recipes/" + encodeURIComponent(this.recipe) + "/tiddlers/" + encodeURIComponent(title),
 		callback: function(err,data,request) {
