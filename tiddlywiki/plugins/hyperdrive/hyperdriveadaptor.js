@@ -1,11 +1,3 @@
-/*\
-title: $:/plugins/hyperdrive/hyperdriveadaptor.js
-type: application/javascript
-module-type: syncadaptor
-
-A sync adaptor module for synchronising with hyperdrive
-
-\*/
 (function(){
 
 /*jslint node: true, browser: true */

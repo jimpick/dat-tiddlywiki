@@ -1,0 +1,14 @@
+{
+  "tiddlers": [
+    {
+      "file": "hyperdriveadaptor.js",
+      "fields": {
+        "type": "application/javascript",
+        "title": "$:/plugins/hyperdrive/hyperdriveadaptor.js",
+        "module-type": "syncadaptor"
+      },
+      "prefix": "",
+      "suffix": ""
+    }
+  ]
+}
