@@ -1,13 +1,14 @@
 {
     "description": "Basic client-server edition",
     "plugins": [
-        "tiddlywiki/tiddlyweb",
+        "hyperdrive",
+        "tiddlyweb2x",
         "tiddlywiki/filesystem",
         "tiddlywiki/highlight"
     ],
     "themes": [
         "tiddlywiki/vanilla",
-        "snowwhite"
+        "snowwhite2"
     ],
     "build": {
         "index": [

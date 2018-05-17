@@ -36,7 +36,7 @@ app.use((state, emitter) => {
 })
 
 app.use(state => {
-  state.glitchAppName = 'dat-tiddlywiki-dev'
+  state.glitchAppName = 'dat-tiddlywiki'
   state.gitHubRepoName = 'jimpick/dat-tiddlywiki'
   state.devMode = false
   state.devLabel = 'e'
