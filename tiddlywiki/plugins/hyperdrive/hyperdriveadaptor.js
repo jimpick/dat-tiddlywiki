@@ -1,5 +1,7 @@
 const rai = require('random-access-idb')
 const hyperdrive = require('hyperdrive')
+const Automerge = require('automerge')
+const equal = require('deep-equal')
 
 if ($tw.node) return // Client-side only for now
 
@@ -16,7 +18,11 @@ function HyperdriveAdaptor (options) {
   const storage = rai(`doc-${keyHex}`)
   this.archive = hyperdrive(storage, keyHex)
   this.ready = false
-  this.archive.ready(() => { this.ready = true })
+  this.archive.ready(() => {
+    this.ready = true
+    this.actorKey = this.archive.db.local.key.toString('hex')
+  })
+  this.tiddlerDocs = {}
 }
 
 HyperdriveAdaptor.prototype.name = "hyperdrive"
@@ -68,16 +74,107 @@ HyperdriveAdaptor.prototype.getSkinnyTiddlers = function (cb) {
 Save a tiddler and invoke the callback with (err,adaptorInfo,revision)
 */
 HyperdriveAdaptor.prototype.saveTiddler = function (tiddler, cb) {
+  const {actorKey} = this
   const {title} = tiddler.fields
   const filepath = this.generateTiddlerBaseFilepath(title)
   this.archive.ready(() => {
-    const filename = `tiddlers/${filepath}.tid`
-    const data = this.wiki.renderTiddler(
-      'text/plain',
-      '$:/core/templates/tid-tiddler',
-      {variables: {currentTiddler: title}}
-    )
+    if (!this.tiddlerDocs[title]) {
+      const metadataDoc = Automerge.init(actorKey)
+      const contentDoc = Automerge.init(actorKey)
+      this.tiddlerDocs[title] = {
+        metadataDoc,
+        metadataLast: {[actorKey]: 0},
+        contentDoc,
+        contentLast: {[actorKey]: 0}
+      }
+    }
+
+    function saveMetadata (tiddlerDoc, archive, cb) {
+      console.log('Save metadata')
+      const oldMetadataDoc = tiddlerDoc.metadataDoc
+      const newMetadataDoc = Automerge.change(oldMetadataDoc, doc => {
+        if (!doc.fields) {
+          doc.fields = {}
+        }
+        for (const fieldName in tiddler.fields) {
+          if (fieldName === 'text') continue
+          if (!equal(doc.fields[fieldName], tiddler.fields[fieldName])) {
+            // FIXME: Should be smarter with fields that are arrays
+            doc.fields[fieldName] = tiddler.fields[fieldName]
+          }
+        }
+      })
+      tiddlerDoc.metadataDoc = newMetadataDoc
+      const changes = Automerge.getChanges(oldMetadataDoc, newMetadataDoc)
+        .filter(change => (
+          change.actor === actorKey &&
+          change.seq > tiddlerDoc.metadataLast[actorKey]
+        ))
+
+      const base = `tiddlers/${filepath}/metadata/${actorKey}`
+      const save = changes.reverse().reduce(
+        (cb, change) => {
+          return err => {
+            if (err) return cb(err)
+            const {actor, seq, ...rest} = change
+            tiddlerDoc.metadataLast[actorKey] = seq
+            const fullPath = `${base}.${seq}.json`
+            const json = JSON.stringify(rest)
+            console.log('Jim change', change, fullPath, json)
+            archive.writeFile(fullPath, json, cb)
+          }
+        },
+        cb
+      )
+      save()
+    }
+
+    function saveContent (tiddlerDoc, archive, cb) {
+      console.log('Save content')
+      const oldContentDoc = tiddlerDoc.contentDoc
+      const newContentDoc = Automerge.change(oldContentDoc, doc => {
+        if (!doc.text) {
+          doc.text = new Automerge.Text()
+          doc.text.insertAt(0, tiddler.fields.text.split(''))
+        }
+        // FIXME: diff
+      })
+      tiddlerDoc.contentDoc = newContentDoc
+      const changes = Automerge.getChanges(oldContentDoc, newContentDoc)
+        .filter(change => (
+          change.actor === actorKey &&
+          change.seq > tiddlerDoc.contentLast[actorKey]
+        ))
+
+      const base = `tiddlers/${filepath}/content/${actorKey}`
+      const save = changes.reverse().reduce(
+        (cb, change) => {
+          return err => {
+            if (err) return cb(err)
+            const {actor, seq, ...rest} = change
+            tiddlerDoc.contentLast[actorKey] = seq
+            const fullPath = `${base}.${seq}.json`
+            const json = JSON.stringify(rest)
+            console.log('Jim change', change, fullPath, json)
+            archive.writeFile(fullPath, json, cb)
+          }
+        },
+        cb
+      )
+      save()
+      cb()
+    }
+
+    const tiddlerDoc = this.tiddlerDocs[title]
+    const {archive} = this
+    saveMetadata(tiddlerDoc, archive, err => {
+      if (err) return cb(err)
+      saveContent(tiddlerDoc, archive, cb)
+    })
+    /*
+    const filename = `tiddlers/${filepath}.${this.actorKey}.${change}.meta.json`
     this.archive.writeFile(filename, data, cb)
+    */
   })
 }
 

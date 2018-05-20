@@ -15,6 +15,7 @@
     "url": "https://github.com/jimpick/dat-tiddlywiki.git"
   },
   "dependencies": {
+    "automerge": "^0.7.8",
     "brfs": "^1.6.1",
     "budo": "^11.2.0",
     "choo": "^6.11.0-preview1",
@@ -42,10 +43,10 @@
     "sheetify": "^7.3.2",
     "sheetify-nested": "^1.0.2",
     "thunky": "^1.0.2",
+    "tiddlywiki": "^5.1.16",
     "to-buffer": "^1.1.1",
     "websocket-stream": "^5.1.2",
-    "workbox-build": "^3.2.0",
-    "tiddlywiki": "^5.1.16"
+    "workbox-build": "^3.2.0"
   },
   "engines": {
     "node": "9.x"
