@@ -4,6 +4,7 @@ const rai = require('random-access-idb')
 const hyperdrive = require('@jimpick/hyperdrive-hyperdb-backend')
 const Automerge = require('automerge')
 const equal = require('deep-equal')
+const jsdiff = require('diff')
 
 if ($tw.node) return // Client-side only for now
 
@@ -84,6 +85,7 @@ HyperdriveAdaptor.prototype.loadTiddlerDocMetadata = function (filepath, cb) {
       })
       .filter(({actorKey, seq}) => {
         if (!actorKey) return false
+        if (!tiddlerDoc.metadataLast[actorKey]) return true
         if (seq < tiddlerDoc.metadataLast[actorKey]) return false
         return true
       })
@@ -95,9 +97,13 @@ HyperdriveAdaptor.prototype.loadTiddlerDocMetadata = function (filepath, cb) {
         return (err, result) => {
           if (err) return cb(err)
           const {actorKey, seq, filename} = change
+          if (!tiddlerDoc.metadataLast[actorKey]) {
+            tiddlerDoc.metadataLast[actorKey] = 0
+          }
           if (tiddlerDoc.metadataLast[actorKey] != seq - 1) {
             // Skip if there are holes in the sequence
-            console.log('Skipping', actorKey, seq)
+            console.error('Skipping', actorKey, seq,
+              'wanted', tiddlerDoc.metadataLast[actorKey] + 1)
             return cb(null, result)
           }
           const fullPath = path.join(metadataDir, filename)
@@ -140,6 +146,79 @@ HyperdriveAdaptor.prototype.loadTiddlerDocMetadata = function (filepath, cb) {
       }
     )
     loadMetadata(null, [])
+  })
+}
+
+HyperdriveAdaptor.prototype.loadTiddlerDocContent = function (filepath, cb) {
+  const tiddlerDoc = this.getTiddlerDoc(filepath)
+  console.log('Jim loadTiddlerDocContent', filepath)
+  const contentDir = path.join('tiddlers', filepath, 'content')
+  this.archive.readdir(contentDir, (err, list) => {
+    if (err) return cb(err)
+    const changes = list
+      .map(filename => {
+        const match = filename.match(/^([0-9a-f]+)\.(\d+)\.json$/)
+        if (!match) return {}
+        return {
+          filename,
+          actorKey: match[1],
+          seq: Number(match[2])
+        }
+      })
+      .filter(({actorKey, seq}) => {
+        if (!actorKey) return false
+        if (!tiddlerDoc.contentLast[actorKey]) return true
+        if (seq < tiddlerDoc.contentLast[actorKey]) return false
+        return true
+      })
+      .sort((a, b) => a.seq - b.seq || a.actorKey < b.actorKey)
+    console.log('Jim list', list)
+    console.log('Jim2', JSON.stringify(changes))
+    const loadContent = changes.reverse().reduce(
+      (cb, change) => {
+        return (err, result) => {
+          if (err) return cb(err)
+          const {actorKey, seq, filename} = change
+          if (!tiddlerDoc.contentLast[actorKey]) {
+            tiddlerDoc.contentLast[actorKey] = 0
+          }
+          if (tiddlerDoc.contentLast[actorKey] != seq - 1) {
+            // Skip if there are holes in the sequence
+            console.error('Skipping', actorKey, seq,
+              'wanted', tiddlerDoc.contentLast[actorKey] + 1)
+            return cb(null, result)
+          }
+          const fullPath = path.join(contentDir, filename)
+          console.log('Jim fullPath', fullPath)
+          this.archive.readFile(fullPath, 'utf-8', (err, data) => {
+            if (err) return cb(err)
+            try {
+              const changeRecord = JSON.parse(data)
+              changeRecord.actor = actorKey
+              changeRecord.seq = seq
+              tiddlerDoc.contentLast[actorKey]++
+              cb(null, [...result, changeRecord])
+            } catch (e) {
+              console.error('JSON parse error', e)
+              return cb(new Error('JSON parse error'))
+            }
+          })
+        }
+      },
+      (err, result) => {
+        if (err) return cb(err)
+        console.log('Result', JSON.stringify(result, null, 2))
+        tiddlerDoc.contentDoc = Automerge.applyChanges(
+          tiddlerDoc.contentDoc,
+          result
+        )
+        console.log('Jim', tiddlerDoc.contentDoc)
+        const text = tiddlerDoc.contentDoc.text.join('')
+        console.log('Text', text)
+        cb(null, text)
+      }
+    )
+    loadContent(null, [])
   })
 }
 
@@ -226,10 +305,28 @@ HyperdriveAdaptor.prototype.saveContent = function (tiddler, cb) {
   const newContentDoc = Automerge.change(oldContentDoc, doc => {
     if (!doc.text) {
       doc.text = new Automerge.Text()
-      doc.text.insertAt(0, tiddler.fields.text.split(''))
+      doc.text.insertAt(0, ...tiddler.fields.text.split(''))
+    } else {
+      const oldText = oldContentDoc.text.join('')
+      const newText = tiddler.fields.text
+      const diff = jsdiff.diffChars(oldText, newText)
+      let index = 0
+      diff.forEach(part => {
+        console.log('Jim part', part, index)
+        if (part.added) {
+          doc.text.insertAt(index, ...part.value.split(''))
+          index += part.count
+        } else if (part.removed) {
+          doc.text.splice(index, part.count)
+        } else {
+          index += part.count
+        }
+        console.log('Jim', index, doc.text.join(''))
+        // FIXME: diff
+      })
     }
-    // FIXME: diff
   })
+  console.log('Jim saveContent', title, newContentDoc.text.join(''))
   tiddlerDoc.contentDoc = newContentDoc
   const changes = Automerge.getChanges(oldContentDoc, newContentDoc)
     .filter(change => (
@@ -262,14 +359,13 @@ Load a tiddler and invoke the callback with (err,tiddlerFields)
 HyperdriveAdaptor.prototype.loadTiddler = function (title, cb) {
   const filepath = this.generateTiddlerBaseFilepath(title)
   this.archive.ready(() => {
-    const fullPath = `tiddlers/${filepath}.tid`
-    this.archive.readFile(fullPath, 'utf-8', (err, data) => {
+    this.loadTiddlerDocMetadata(filepath, (err, metadata) => {
       if (err) return cb(err)
-      const tiddlers = $tw.wiki.deserializeTiddlers(
-        '.tid',
-        data
-      )
-      cb(null, tiddlers[0])
+      if (!metadata) return cb(new Error('Missing metadata'))
+      this.loadTiddlerDocContent(filepath, (err, text) => {
+        if (err) return cb(err)
+        cb(null, {...metadata, text})
+      })
     })
   })
 }
