@@ -15,7 +15,7 @@
     "url": "https://github.com/jimpick/dat-tiddlywiki.git"
   },
   "dependencies": {
-    "@jimpick/hyperdrive-hyperdb-backend": "9.12.3-2",
+    "hyperdrive": "mafintosh/hyperdrive#hyperdb-backend",
     "automerge": "^0.7.8",
     "brfs": "^1.6.1",
     "budo": "^11.2.0",

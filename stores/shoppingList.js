@@ -1,7 +1,6 @@
 const rai = require('random-access-idb')
 const toBuffer = require('to-buffer')
-// const hyperdrive = require('hyperdrive')
-const hyperdrive = require('@jimpick/hyperdrive-hyperdb-backend')
+const hyperdrive = require('hyperdrive')
 const crypto = require('hypercore/lib/crypto')
 const newId = require('monotonic-timestamp-base36')
 const dumpWriters = require('../lib/dumpWriters')
