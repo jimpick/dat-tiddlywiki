@@ -8,9 +8,9 @@
   dependencies:
     commander "^2.15.1"
 
-"@jimpick/hyperdrive-hyperdb-backend@9.12.3-1":
-  version "9.12.3-1"
-  resolved "https://registry.yarnpkg.com/@jimpick/hyperdrive-hyperdb-backend/-/hyperdrive-hyperdb-backend-9.12.3-1.tgz#5d7b4a55dddf602cfda4f43a241467e32943c6fe"
+"@jimpick/hyperdrive-hyperdb-backend@9.12.3-2":
+  version "9.12.3-2"
+  resolved "https://registry.npmjs.org/@jimpick/hyperdrive-hyperdb-backend/-/hyperdrive-hyperdb-backend-9.12.3-2.tgz#db34a6dd00dc9447978148deb0d9007ef1a861cd"
   dependencies:
     append-tree "^2.3.5"
     bulk-write-stream "^1.1.3"

@@ -69,7 +69,6 @@ HyperdriveAdaptor.prototype.getSkinnyTiddlers = function (cb) {
 
 HyperdriveAdaptor.prototype.loadTiddlerDocMetadata = function (filepath, cb) {
   const tiddlerDoc = this.getTiddlerDoc(filepath)
-  console.log('Jim loadTiddlerDocMetadata', filepath)
   const metadataDir = path.join('tiddlers', filepath, 'metadata')
   this.archive.readdir(metadataDir, (err, list) => {
     if (err) return cb(err)
@@ -90,8 +89,6 @@ HyperdriveAdaptor.prototype.loadTiddlerDocMetadata = function (filepath, cb) {
         return true
       })
       .sort((a, b) => a.seq - b.seq || a.actorKey < b.actorKey)
-    console.log('Jim list', list)
-    console.log('Jim2', JSON.stringify(changes))
     const loadMetadata = changes.reverse().reduce(
       (cb, change) => {
         return (err, result) => {
@@ -107,7 +104,6 @@ HyperdriveAdaptor.prototype.loadTiddlerDocMetadata = function (filepath, cb) {
             return cb(null, result)
           }
           const fullPath = path.join(metadataDir, filename)
-          console.log('Jim fullPath', fullPath)
           this.archive.readFile(fullPath, 'utf-8', (err, data) => {
             if (err) return cb(err)
             try {
@@ -125,7 +121,6 @@ HyperdriveAdaptor.prototype.loadTiddlerDocMetadata = function (filepath, cb) {
       },
       (err, result) => {
         if (err) return cb(err)
-        console.log('Result', JSON.stringify(result, null, 2))
         tiddlerDoc.metadataDoc = Automerge.applyChanges(
           tiddlerDoc.metadataDoc,
           result
@@ -141,7 +136,6 @@ HyperdriveAdaptor.prototype.loadTiddlerDocMetadata = function (filepath, cb) {
             delete fields.list[propName]
           }
         }
-        console.log('Fields', JSON.stringify(fields, null, 2))
         cb(null, fields)
       }
     )
@@ -151,7 +145,6 @@ HyperdriveAdaptor.prototype.loadTiddlerDocMetadata = function (filepath, cb) {
 
 HyperdriveAdaptor.prototype.loadTiddlerDocContent = function (filepath, cb) {
   const tiddlerDoc = this.getTiddlerDoc(filepath)
-  console.log('Jim loadTiddlerDocContent', filepath)
   const contentDir = path.join('tiddlers', filepath, 'content')
   this.archive.readdir(contentDir, (err, list) => {
     if (err) return cb(err)
@@ -172,8 +165,6 @@ HyperdriveAdaptor.prototype.loadTiddlerDocContent = function (filepath, cb) {
         return true
       })
       .sort((a, b) => a.seq - b.seq || a.actorKey < b.actorKey)
-    console.log('Jim list', list)
-    console.log('Jim2', JSON.stringify(changes))
     const loadContent = changes.reverse().reduce(
       (cb, change) => {
         return (err, result) => {
@@ -189,7 +180,6 @@ HyperdriveAdaptor.prototype.loadTiddlerDocContent = function (filepath, cb) {
             return cb(null, result)
           }
           const fullPath = path.join(contentDir, filename)
-          console.log('Jim fullPath', fullPath)
           this.archive.readFile(fullPath, 'utf-8', (err, data) => {
             if (err) return cb(err)
             try {
@@ -207,14 +197,11 @@ HyperdriveAdaptor.prototype.loadTiddlerDocContent = function (filepath, cb) {
       },
       (err, result) => {
         if (err) return cb(err)
-        console.log('Result', JSON.stringify(result, null, 2))
         tiddlerDoc.contentDoc = Automerge.applyChanges(
           tiddlerDoc.contentDoc,
           result
         )
-        console.log('Jim', tiddlerDoc.contentDoc)
         const text = tiddlerDoc.contentDoc.text.join('')
-        console.log('Text', text)
         cb(null, text)
       }
     )
@@ -251,7 +238,6 @@ HyperdriveAdaptor.prototype.saveTiddler = function (tiddler, cb) {
 }
 
 HyperdriveAdaptor.prototype.saveMetadata = function (tiddler, cb) {
-  console.log('Save metadata')
   const {actorKey, archive} = this
   const {title} = tiddler.fields
   const filepath = this.generateTiddlerBaseFilepath(title) 
@@ -286,7 +272,6 @@ HyperdriveAdaptor.prototype.saveMetadata = function (tiddler, cb) {
         tiddlerDoc.metadataLast[actorKey] = seq
         const fullPath = `${base}.${seq}.json`
         const json = JSON.stringify(rest)
-        console.log('Jim change', change, fullPath, json)
         archive.writeFile(fullPath, json, cb)
       }
     },
@@ -296,7 +281,6 @@ HyperdriveAdaptor.prototype.saveMetadata = function (tiddler, cb) {
 }
 
 HyperdriveAdaptor.prototype.saveContent = function (tiddler, cb) {
-  console.log('Save content')
   const {actorKey, archive} = this
   const {title} = tiddler.fields
   const filepath = this.generateTiddlerBaseFilepath(title) 
@@ -312,7 +296,6 @@ HyperdriveAdaptor.prototype.saveContent = function (tiddler, cb) {
       const diff = jsdiff.diffChars(oldText, newText)
       let index = 0
       diff.forEach(part => {
-        console.log('Jim part', part, index)
         if (part.added) {
           doc.text.insertAt(index, ...part.value.split(''))
           index += part.count
@@ -321,12 +304,9 @@ HyperdriveAdaptor.prototype.saveContent = function (tiddler, cb) {
         } else {
           index += part.count
         }
-        console.log('Jim', index, doc.text.join(''))
-        // FIXME: diff
       })
     }
   })
-  console.log('Jim saveContent', title, newContentDoc.text.join(''))
   tiddlerDoc.contentDoc = newContentDoc
   const changes = Automerge.getChanges(oldContentDoc, newContentDoc)
     .filter(change => (
@@ -343,7 +323,6 @@ HyperdriveAdaptor.prototype.saveContent = function (tiddler, cb) {
         tiddlerDoc.contentLast[actorKey] = seq
         const fullPath = `${base}.${seq}.json`
         const json = JSON.stringify(rest)
-        console.log('Jim change', change, fullPath, json)
         archive.writeFile(fullPath, json, cb)
       }
     },
@@ -377,9 +356,44 @@ tiddlerInfo: the syncer's tiddlerInfo for this tiddler
 */
 HyperdriveAdaptor.prototype.deleteTiddler = function (title, cb, options) {
   const filepath = this.generateTiddlerBaseFilepath(title)
+  const baseDir = path.join('tiddlers', filepath)
   this.archive.ready(() => {
-    const filename = `tiddlers/${filepath}.tid`
-    this.archive.unlink(filename, cb)
+    this.rmdirRecursive(baseDir, cb)
+  })
+}
+
+HyperdriveAdaptor.prototype.rmdirRecursive = function (dir, cb) {
+  this.archive.stat(dir, (err, stat) => {
+    if (!stat) return cb()
+    if (stat.isDirectory()) {
+      this.archive.readdir(dir, (err, list) => {
+        const deleteAll = list.reverse().reduce(
+          (cb, filename) => {
+            return err => {
+              if (err) return cb(err)
+              const fullPath = path.join(dir, filename)
+              this.archive.stat(fullPath, (err, stat) => {
+                if (err) return cb(err)
+                if (stat.isDirectory()) {
+                  this.rmdirRecursive(fullPath, cb)
+                } else if (stat.isFile()) {
+                  this.archive.unlink(fullPath, cb)
+                } else {
+                  cb(new Error('Not directory or link')) 
+                }
+              })
+            }
+          },
+          err => {
+            if (err) return cb(err)
+            this.archive.rmdir(dir, cb)
+          }
+        )
+        deleteAll()
+      })
+    } else {
+      return cb(new Error('Not a directory'))
+    }
   })
 }
 
