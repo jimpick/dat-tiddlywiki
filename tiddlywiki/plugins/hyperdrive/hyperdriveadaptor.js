@@ -201,7 +201,8 @@ HyperdriveAdaptor.prototype.loadTiddlerDocContent = function (filepath, cb) {
           tiddlerDoc.contentDoc,
           result
         )
-        const text = tiddlerDoc.contentDoc.text.join('')
+        const text = tiddlerDoc.contentDoc.text ?
+          tiddlerDoc.contentDoc.text.join('') : ''
         cb(null, text)
       }
     )
@@ -291,7 +292,8 @@ HyperdriveAdaptor.prototype.saveContent = function (tiddler, cb) {
       doc.text = new Automerge.Text()
       doc.text.insertAt(0, ...tiddler.fields.text.split(''))
     } else {
-      const oldText = oldContentDoc.text.join('')
+      const oldText = oldContentDoc.text ?
+        oldContentDoc.text.join('') : ''
       const newText = tiddler.fields.text
       const diff = jsdiff.diffChars(oldText, newText)
       let index = 0
