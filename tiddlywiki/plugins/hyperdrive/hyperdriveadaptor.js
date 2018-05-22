@@ -85,7 +85,7 @@ HyperdriveAdaptor.prototype.loadTiddlerDocMetadata = function (filepath, cb) {
       .filter(({actorKey, seq}) => {
         if (!actorKey) return false
         if (!tiddlerDoc.metadataLast[actorKey]) return true
-        if (seq < tiddlerDoc.metadataLast[actorKey]) return false
+        if (seq <= tiddlerDoc.metadataLast[actorKey]) return false
         return true
       })
       .sort((a, b) => a.seq - b.seq || a.actorKey < b.actorKey)
@@ -99,7 +99,7 @@ HyperdriveAdaptor.prototype.loadTiddlerDocMetadata = function (filepath, cb) {
           }
           if (tiddlerDoc.metadataLast[actorKey] != seq - 1) {
             // Skip if there are holes in the sequence
-            console.error('Skipping', actorKey, seq,
+            console.error('Skipping', filepath, actorKey, seq,
               'wanted', tiddlerDoc.metadataLast[actorKey] + 1)
             return cb(null, result)
           }
@@ -161,7 +161,7 @@ HyperdriveAdaptor.prototype.loadTiddlerDocContent = function (filepath, cb) {
       .filter(({actorKey, seq}) => {
         if (!actorKey) return false
         if (!tiddlerDoc.contentLast[actorKey]) return true
-        if (seq < tiddlerDoc.contentLast[actorKey]) return false
+        if (seq <= tiddlerDoc.contentLast[actorKey]) return false
         return true
       })
       .sort((a, b) => a.seq - b.seq || a.actorKey < b.actorKey)
@@ -175,7 +175,7 @@ HyperdriveAdaptor.prototype.loadTiddlerDocContent = function (filepath, cb) {
           }
           if (tiddlerDoc.contentLast[actorKey] != seq - 1) {
             // Skip if there are holes in the sequence
-            console.error('Skipping', actorKey, seq,
+            console.error('Skipping', filepath, actorKey, seq,
               'wanted', tiddlerDoc.contentLast[actorKey] + 1)
             return cb(null, result)
           }
