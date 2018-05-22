@@ -300,7 +300,9 @@ HyperdriveAdaptor.prototype.saveContent = function (tiddler, cb) {
   const newContentDoc = Automerge.change(oldContentDoc, doc => {
     if (!doc.text) {
       doc.text = new Automerge.Text()
-      doc.text.insertAt(0, ...tiddler.fields.text.split(''))
+      if (tiddler.fields.text) {
+        doc.text.insertAt(0, ...tiddler.fields.text.split(''))
+      }
     } else {
       const oldText = oldContentDoc.text ?
         oldContentDoc.text.join('') : ''
