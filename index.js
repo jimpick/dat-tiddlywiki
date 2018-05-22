@@ -40,8 +40,8 @@ if (document.location.protocol === 'https:') {
 app.use(state => {
   state.glitchAppName = 'dat-tiddlywiki'
   state.gitHubRepoName = 'jimpick/dat-tiddlywiki'
-  state.devMode = false
-  state.devLabel = 'e'
+  state.devMode = true
+  state.devLabel = 'a'
 })
 app.use(networkStatusStore)
 app.use(documentsStore)

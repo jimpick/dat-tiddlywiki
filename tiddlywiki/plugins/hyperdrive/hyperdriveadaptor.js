@@ -1,9 +1,12 @@
 const path = require('path')
 const rai = require('random-access-idb')
-const hyperdrive = require('hyperdrive')
+// const hyperdrive = require('hyperdrive')
+const hyperdrive = require('@jimpick/hyperdrive-hyperdb-backend')
 const Automerge = require('automerge')
 const equal = require('deep-equal')
 const jsdiff = require('diff')
+const connectToGateway = require('../../../lib/websocketGateway')
+const dumpWriters = require('../../../lib/dumpWriters')
 
 if ($tw.node) return // Client-side only for now
 
@@ -23,6 +26,13 @@ function HyperdriveAdaptor (options) {
   this.archive.ready(() => {
     this.ready = true
     this.actorKey = this.archive.db.local.key.toString('hex')
+    dumpWriters(this.archive)
+    connectToGateway(this.archive)
+    this.archive.db.watch(() => {
+      console.log('Archive updated:', this.archive.key.toString('hex'))
+      dumpWriters(this.archive)
+      $tw.syncer.syncFromServer()
+    })
   })
   this.tiddlerDocs = {}
 }
@@ -229,6 +239,7 @@ Save a tiddler and invoke the callback with (err,adaptorInfo,revision)
 */
 HyperdriveAdaptor.prototype.saveTiddler = function (tiddler, cb) {
   const {title} = tiddler.fields
+  if (title === '$:/StoryList') return cb()
   this.archive.ready(() => {
     this.saveMetadata(tiddler, err => {
       if (err) return cb(err)
