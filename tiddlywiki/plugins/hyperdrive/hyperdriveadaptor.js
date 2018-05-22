@@ -1,6 +1,7 @@
 const path = require('path')
 const rai = require('random-access-idb')
-const hyperdrive = require('hyperdrive')
+// const hyperdrive = require('hyperdrive')
+const hyperdrive = require('@jimpick/hyperdrive-hyperdb-backend')
 const Automerge = require('automerge')
 const equal = require('deep-equal')
 
