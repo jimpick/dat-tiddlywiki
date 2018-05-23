@@ -73,7 +73,9 @@ function store (state, emitter) {
         state.cancelGatewayReplication = connectToGateway(
           archive, updateSyncStatus, updateConnecting
         )
-        readShoppingList()
+        if (archive.db._writers[0].length() > 0) {
+          readShoppingList()
+        }
         archive.db.watch(() => {
           console.log('Archive updated:', archive.key.toString('hex'))
           dumpWriters(archive)
