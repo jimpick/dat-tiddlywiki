@@ -8,16 +8,16 @@
   dependencies:
     commander "^2.15.1"
 
-"@jimpick/hyperdrive-hyperdb-backend@^9.12.3-6":
-  version "9.12.3-6"
-  resolved "https://registry.yarnpkg.com/@jimpick/hyperdrive-hyperdb-backend/-/hyperdrive-hyperdb-backend-9.12.3-6.tgz#1a742a9ae8a2efe433bc847863ff70eb211a248d"
+"@jimpick/hyperdrive-hyperdb-backend@^9.12.3-7":
+  version "9.12.3-7"
+  resolved "https://registry.yarnpkg.com/@jimpick/hyperdrive-hyperdb-backend/-/hyperdrive-hyperdb-backend-9.12.3-7.tgz#94f5790a00bd614af5675d9f3f12f57c2e92792c"
   dependencies:
     append-tree "^2.3.5"
     bulk-write-stream "^1.1.3"
     duplexify "^3.5.0"
     from2 "^2.3.0"
     hypercore "^6.10.4"
-    hyperdb "^3.0.0"
+    hyperdb jimpick/hyperdb#catch-decode-error
     inherits "^2.0.3"
     is-options "^1.0.1"
     mutexify "^1.1.0"
@@ -1550,9 +1550,9 @@ hypercore@^6.10.4, hypercore@^6.13.0:
     unordered-array-remove "^1.0.2"
     unordered-set "^2.0.0"
 
-hyperdb@^3.0.0:
+"hyperdb@github:jimpick/hyperdb#catch-decode-error":
   version "3.0.0"
-  resolved "https://registry.yarnpkg.com/hyperdb/-/hyperdb-3.0.0.tgz#4e698effec9d57b0043e3f393d9db5f6eb3edaf0"
+  resolved "https://codeload.github.com/jimpick/hyperdb/tar.gz/fdccf8c93d27fe0b5bc769de92f6a8260ebc8820"
   dependencies:
     array-lru "^1.1.1"
     bulk-write-stream "^1.1.3"
