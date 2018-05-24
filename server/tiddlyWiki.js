@@ -5,28 +5,33 @@ const tiddlywikiBoot = require('tiddlywiki/boot/boot')
 
 // See: https://gist.github.com/Arlen22/bbd852f68e328165e49f
 
+/*
 process.env['TIDDLYWIKI_THEME_PATH'] = path.resolve(
   __dirname, '..', 'tiddlywiki', 'themes'
 )
 process.env['TIDDLYWIKI_PLUGIN_PATH'] = path.resolve(
   __dirname, '..', 'tiddlywiki', 'plugins'
 )
+*/
 
 const wikis = {}
 
 function getWiki(key) {
   if (wikis[key]) return wikis[key]
-  const wikiPath = path.join('.data', 'wikis', key)
-  mkdirp.sync(wikiPath)
-  const tiddlyInfo = fs.readFileSync('tiddlywiki/tiddlywiki.info')
-  fs.writeFileSync(path.join(wikiPath, 'tiddlywiki.info'), tiddlyInfo)
+  // const wikiPath = path.join('.data', 'wikis', key)
+  // mkdirp.sync(wikiPath)
+  // const tiddlyInfo = fs.readFileSync('tiddlywiki/tiddlywiki.info')
+  // fs.writeFileSync(path.join(wikiPath, 'tiddlywiki.info'), tiddlyInfo)
   $tw = tiddlywikiBoot.TiddlyWiki()
-  $tw.boot.argv = [wikiPath]
+  // $tw.boot.argv = [wikiPath]
+  $tw.boot.argv = ['tiddlywiki']
   $tw.boot.boot()
+  /*
   $tw.wiki.addTiddler({
     text: `$protocol$//$host$/doc/${key}/tw/`,
     title: '$:/config/tiddlyweb/host'
   })
+  */
   const serverCommand = $tw.modules.execute(
     'tiddlywiki/core/modules/commands/server.js'
   ).Command

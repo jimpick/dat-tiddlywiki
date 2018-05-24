@@ -1,7 +1,0 @@
-{
-	"title": "$:/plugins/tiddlyweb2",
-	"description": "TiddlyWeb2",
-	"author": "JeremyRuston",
-	"core-version": ">=5.0.0",
-	"list": "readme"
-}
