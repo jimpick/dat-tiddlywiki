@@ -8,9 +8,32 @@
   dependencies:
     commander "^2.15.1"
 
+"@jimpick/hyperdrive-hyperdb-backend@^9.12.3-7":
+  version "9.12.3-7"
+  resolved "https://registry.yarnpkg.com/@jimpick/hyperdrive-hyperdb-backend/-/hyperdrive-hyperdb-backend-9.12.3-7.tgz#94f5790a00bd614af5675d9f3f12f57c2e92792c"
+  dependencies:
+    append-tree "^2.3.5"
+    bulk-write-stream "^1.1.3"
+    duplexify "^3.5.0"
+    from2 "^2.3.0"
+    hypercore "^6.10.4"
+    hyperdb jimpick/hyperdb#catch-decode-error
+    inherits "^2.0.3"
+    is-options "^1.0.1"
+    mutexify "^1.1.0"
+    protocol-buffers-encodings "^1.1.0"
+    random-access-file "^2.0.1"
+    random-access-storage "^1.1.1"
+    sodium-universal "^2.0.0"
+    stream-collector "^1.0.1"
+    stream-each "^1.2.0"
+    thunky "^1.0.2"
+    uint64be "^2.0.1"
+    unixify "^1.0.0"
+
 JSONStream@^1.0.3:
-  version "1.3.2"
-  resolved "https://registry.yarnpkg.com/JSONStream/-/JSONStream-1.3.2.tgz#c102371b6ec3a7cf3b847ca00c20bb0fce4c6dea"
+  version "1.3.3"
+  resolved "https://registry.yarnpkg.com/JSONStream/-/JSONStream-1.3.3.tgz#27b4b8fbbfeab4e71bcf551e7f27be8d952239bf"
   dependencies:
     jsonparse "^1.2.0"
     through ">=2.2.7 <3"
@@ -75,8 +98,8 @@ anymatch@^1.3.0:
     normalize-path "^2.0.0"
 
 append-tree@^2.3.5:
-  version "2.4.1"
-  resolved "https://registry.yarnpkg.com/append-tree/-/append-tree-2.4.1.tgz#ec737ceb8b695e632bf2652aaf6e4990ad2ecaf6"
+  version "2.4.3"
+  resolved "https://registry.yarnpkg.com/append-tree/-/append-tree-2.4.3.tgz#9536d3584bdf35958a2409e68e51440b4c5a3a65"
   dependencies:
     array-lru "^1.1.1"
     codecs "^1.2.0"
@@ -163,6 +186,15 @@ async-limiter@~1.0.0:
 atomic-batcher@^1.0.2:
   version "1.0.2"
   resolved "https://registry.yarnpkg.com/atomic-batcher/-/atomic-batcher-1.0.2.tgz#d16901d10ccec59516c197b9ccd8930689b813b4"
+
+automerge@^0.7.8:
+  version "0.7.8"
+  resolved "https://registry.yarnpkg.com/automerge/-/automerge-0.7.8.tgz#fe9f41e10fb8f802ed773ad6c04f46fa8b21fef7"
+  dependencies:
+    immutable "^3.8.2"
+    transit-immutable-js "^0.7.0"
+    transit-js "^0.8.861"
+    uuid "^3.2.1"
 
 babel-runtime@^6.26.0:
   version "6.26.0"
@@ -426,8 +458,8 @@ browserify@^16.1.0:
     xtend "^4.0.0"
 
 budo@^11.2.0:
-  version "11.2.0"
-  resolved "https://registry.yarnpkg.com/budo/-/budo-11.2.0.tgz#ac4219b957b00bc9eaaaac61253e07c36a871522"
+  version "11.2.2"
+  resolved "https://registry.yarnpkg.com/budo/-/budo-11.2.2.tgz#b99da17665cbf59b42169ebad2aecd672381258e"
   dependencies:
     bole "^2.0.0"
     browserify "^16.1.0"
@@ -665,6 +697,10 @@ common-tags@^1.4.0:
   resolved "https://registry.yarnpkg.com/common-tags/-/common-tags-1.7.2.tgz#24d9768c63d253a56ecff93845b44b4df1d52771"
   dependencies:
     babel-runtime "^6.26.0"
+
+compare@^2.0.0:
+  version "2.0.0"
+  resolved "https://registry.yarnpkg.com/compare/-/compare-2.0.0.tgz#8090b34dcb288f629e905972da69ea7a6d5922a0"
 
 compressible@~2.0.13:
   version "2.0.13"
@@ -923,6 +959,10 @@ detective@^5.0.2:
     acorn-node "^1.3.0"
     defined "^1.0.0"
     minimist "^1.1.1"
+
+diff@^3.5.0:
+  version "3.5.0"
+  resolved "https://registry.yarnpkg.com/diff/-/diff-3.5.0.tgz#800c0dd1e0a8bfbc95835c202ad220fe317e5a12"
 
 diffie-hellman@^5.0.0:
   version "5.0.3"
@@ -1510,13 +1550,14 @@ hypercore@^6.10.4, hypercore@^6.13.0:
     unordered-array-remove "^1.0.2"
     unordered-set "^2.0.0"
 
-"hyperdb@github:mafintosh/hyperdb#master":
-  version "3.0.0-4"
-  resolved "https://codeload.github.com/mafintosh/hyperdb/tar.gz/e225a5c0b7ff93c04e8e752fcbd3fa235106da06"
+"hyperdb@github:jimpick/hyperdb#catch-decode-error":
+  version "3.0.0"
+  resolved "https://codeload.github.com/jimpick/hyperdb/tar.gz/fdccf8c93d27fe0b5bc769de92f6a8260ebc8820"
   dependencies:
     array-lru "^1.1.1"
     bulk-write-stream "^1.1.3"
     codecs "^1.2.1"
+    compare "^2.0.0"
     hypercore "^6.13.0"
     hypercore-protocol "^6.6.4"
     inherits "^2.0.3"
@@ -1538,29 +1579,6 @@ hyperdiscovery@^7.1.0:
     discovery-swarm "^4.0.2"
     safe-buffer "^5.1.1"
     xtend "^4.0.1"
-
-hyperdrive@mafintosh/hyperdrive#hyperdb-backend:
-  version "9.12.3"
-  resolved "https://codeload.github.com/mafintosh/hyperdrive/tar.gz/bae2bd29d6833dd20b1ec9eb259d1afdd230a3a1"
-  dependencies:
-    append-tree "^2.3.5"
-    bulk-write-stream "^1.1.3"
-    duplexify "^3.5.0"
-    from2 "^2.3.0"
-    hypercore "^6.10.4"
-    hyperdb "github:mafintosh/hyperdb#master"
-    inherits "^2.0.3"
-    is-options "^1.0.1"
-    mutexify "^1.1.0"
-    protocol-buffers-encodings "^1.1.0"
-    random-access-file "^2.0.1"
-    random-access-storage "^1.1.1"
-    sodium-universal "^2.0.0"
-    stream-collector "^1.0.1"
-    stream-each "^1.2.0"
-    thunky "^1.0.2"
-    uint64be "^2.0.1"
-    unixify "^1.0.0"
 
 hyperscript-attribute-to-property@^1.0.0:
   version "1.0.0"
@@ -1595,6 +1613,10 @@ ignore-walk@^3.0.1:
 immediate@~3.0.5:
   version "3.0.6"
   resolved "https://registry.yarnpkg.com/immediate/-/immediate-3.0.6.tgz#9db1dbd0faf8de6fbe0f5dd5e56bb606280de69b"
+
+immutable@^3.8.2:
+  version "3.8.2"
+  resolved "https://registry.yarnpkg.com/immutable/-/immutable-3.8.2.tgz#c2439951455bb39913daf281376f1530e104adf3"
 
 indexes-of@^1.0.1:
   version "1.0.1"
@@ -1640,8 +1662,8 @@ insert-css@^2.0.0:
   resolved "https://registry.yarnpkg.com/insert-css/-/insert-css-2.0.0.tgz#eb5d1097b7542f4c79ea3060d3aee07d053880f4"
 
 insert-module-globals@^7.0.0:
-  version "7.0.6"
-  resolved "https://registry.yarnpkg.com/insert-module-globals/-/insert-module-globals-7.0.6.tgz#15a31d9d394e76d08838b9173016911d7fd4ea1b"
+  version "7.1.0"
+  resolved "https://registry.yarnpkg.com/insert-module-globals/-/insert-module-globals-7.1.0.tgz#dbb3cea71d3a43d5a07ef0310fe5f078aa4dbf35"
   dependencies:
     JSONStream "^1.0.3"
     combine-source-map "^0.8.0"
@@ -1797,8 +1819,8 @@ joi@^11.1.1:
     topo "2.x.x"
 
 js-base64@^2.1.9:
-  version "2.4.3"
-  resolved "https://registry.yarnpkg.com/js-base64/-/js-base64-2.4.3.tgz#2e545ec2b0f2957f41356510205214e98fad6582"
+  version "2.4.5"
+  resolved "https://registry.yarnpkg.com/js-base64/-/js-base64-2.4.5.tgz#e293cd3c7c82f070d700fc7a1ca0a2e69f101f92"
 
 json-stable-stringify@~0.0.0:
   version "0.0.1"
@@ -2089,10 +2111,10 @@ minimist@^1.1.0, minimist@^1.1.1, minimist@^1.1.3, minimist@^1.2.0:
   resolved "https://registry.yarnpkg.com/minimist/-/minimist-1.2.0.tgz#a35008b20f41383eec1fb914f4cd5df79a264284"
 
 minipass@^2.2.1, minipass@^2.2.4:
-  version "2.3.0"
-  resolved "https://registry.yarnpkg.com/minipass/-/minipass-2.3.0.tgz#2e11b1c46df7fe7f1afbe9a490280add21ffe384"
+  version "2.3.3"
+  resolved "https://registry.yarnpkg.com/minipass/-/minipass-2.3.3.tgz#a7dcc8b7b833f5d368759cce544dccb55f50f233"
   dependencies:
-    safe-buffer "^5.1.1"
+    safe-buffer "^5.1.2"
     yallist "^3.0.0"
 
 minizlib@^1.1.0:
@@ -2108,8 +2130,8 @@ mkdirp@^0.5.0, mkdirp@^0.5.1:
     minimist "0.0.8"
 
 module-deps@^6.0.0:
-  version "6.0.2"
-  resolved "https://registry.yarnpkg.com/module-deps/-/module-deps-6.0.2.tgz#660217d1602b863ac8d4d16951a3720dd9aa4c80"
+  version "6.1.0"
+  resolved "https://registry.yarnpkg.com/module-deps/-/module-deps-6.1.0.tgz#d1e1efc481c6886269f7112c52c3236188e16479"
   dependencies:
     JSONStream "^1.0.3"
     browser-resolve "^1.7.0"
@@ -2700,8 +2722,8 @@ punycode@1.3.2:
   resolved "https://registry.yarnpkg.com/punycode/-/punycode-1.3.2.tgz#9653a036fb7c1ee42342f2325cceefea3926c48d"
 
 punycode@2.x.x:
-  version "2.1.0"
-  resolved "https://registry.yarnpkg.com/punycode/-/punycode-2.1.0.tgz#5f863edc89b96db09074bad7947bf09056ca4e7d"
+  version "2.1.1"
+  resolved "https://registry.yarnpkg.com/punycode/-/punycode-2.1.1.tgz#b58b010ac40c22c5657616c8d2c2c02c7bf479ec"
 
 punycode@^1.3.2:
   version "1.4.1"
@@ -3105,8 +3127,8 @@ simple-html-index@^1.4.0:
     from2-string "^1.1.0"
 
 simple-sha1@^2.1.0:
-  version "2.1.0"
-  resolved "https://registry.yarnpkg.com/simple-sha1/-/simple-sha1-2.1.0.tgz#9427bb96ff1263cc10a8414cedd51a18b919e8b3"
+  version "2.1.1"
+  resolved "https://registry.yarnpkg.com/simple-sha1/-/simple-sha1-2.1.1.tgz#93f3b7f2e8dfdc056c32793e5d47b58d311b140d"
   dependencies:
     rusha "^0.8.1"
 
@@ -3464,6 +3486,14 @@ transform-ast@^2.4.0:
     merge-source-map "1.0.4"
     nanobench "^2.1.1"
 
+transit-immutable-js@^0.7.0:
+  version "0.7.0"
+  resolved "https://registry.yarnpkg.com/transit-immutable-js/-/transit-immutable-js-0.7.0.tgz#993e25089b6311ff402140f556276d6d253005d9"
+
+transit-js@^0.8.861:
+  version "0.8.861"
+  resolved "https://registry.yarnpkg.com/transit-js/-/transit-js-0.8.861.tgz#829e516b80349a41fff5d59f5e6993b5473f72c9"
+
 tty-browserify@0.0.1:
   version "0.0.1"
   resolved "https://registry.yarnpkg.com/tty-browserify/-/tty-browserify-0.0.1.tgz#3f05251ee17904dfd0677546670db9651682b811"
@@ -3571,6 +3601,10 @@ utp-native@^1.2.2:
     nan "^2.5.1"
     node-gyp-build "^3.0.0"
     readable-stream "^2.2.2"
+
+uuid@^3.2.1:
+  version "3.2.1"
+  resolved "https://registry.yarnpkg.com/uuid/-/uuid-3.2.1.tgz#12c528bb9d58d0b9265d9a2f6f0fe8be17ff1f14"
 
 varint@^3.0.1:
   version "3.0.1"
