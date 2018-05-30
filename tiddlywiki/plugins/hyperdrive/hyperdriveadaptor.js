@@ -23,6 +23,7 @@ function HyperdriveAdaptor (options) {
   const storage = rai(`doc-${keyHex}`)
   this.archive = hyperdrive(storage, keyHex)
   this.ready = false
+  this.synced = false
   this.archive.ready(() => {
     this.ready = true
     this.actorKey = this.archive.db.local.key.toString('hex')
@@ -68,6 +69,18 @@ HyperdriveAdaptor.prototype.getSkinnyTiddlers = function (cb) {
         },
         (err, result) => {
           if (err) return cb(err)
+          if (!this.synced) {
+            this.synced = true
+            if (result.length === 0) {
+              $tw.wiki.addTiddler({
+                title: '$:/DefaultTiddlers',
+                text: 'GettingStarted'
+              })
+            }
+            setTimeout(() => {
+              $tw.rootWidget.dispatchEvent({type: 'tm-home'})
+            }, 1000)
+          }
           cb(null, result)
         }
       )
@@ -240,6 +253,7 @@ Save a tiddler and invoke the callback with (err,adaptorInfo,revision)
 HyperdriveAdaptor.prototype.saveTiddler = function (tiddler, cb) {
   const {title} = tiddler.fields
   if (title === '$:/StoryList') return cb()
+  if (tiddler.fields['draft.of']) return cb() // 
   this.archive.ready(() => {
     this.saveMetadata(tiddler, err => {
       if (err) return cb(err)
