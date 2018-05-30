@@ -21,7 +21,7 @@ title: $:/core/ui/PageTemplate/sidebar
 
 </div>
 
-<a href=".">Authorize/Sync</a>
+<a href=".">Authorize/Sync</a> | <a href="/">All Wikis</a>
 
 {{||$:/core/ui/PageTemplate/pagecontrols}}
 

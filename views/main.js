@@ -110,7 +110,7 @@ function mainView (state, emit) {
       <li onclick=${openTiddlyWiki} onkeydown=${keydown} tabindex="0" role="button">
         <span class="link">${doc.name}</span>
         <span class="key">${prettyHash(doc.key)}</span>
-        <span class="settings" onclick={click} onkeydown=${keydown}>
+        <span class="settings" onclick=${click} onkeydown=${keydown}>
           <a href="/doc/${doc.key}" class="link">
             <img src="/img/baseline-settings-20px.svg">
           </a>
@@ -121,11 +121,13 @@ function mainView (state, emit) {
     function openTiddlyWiki (event) {
       const url = `/doc/${doc.key}/tw`
       location.href = url
+      event.preventDefault()
     }
 
     function click (event) {
       const link = event.target.querySelector('a')
       if (link) link.click()
+      event.stopPropagation()
     }
 
     function keydown (event) {
