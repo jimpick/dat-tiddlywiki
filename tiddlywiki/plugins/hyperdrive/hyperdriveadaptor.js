@@ -253,7 +253,8 @@ Save a tiddler and invoke the callback with (err,adaptorInfo,revision)
 HyperdriveAdaptor.prototype.saveTiddler = function (tiddler, cb) {
   const {title} = tiddler.fields
   if (title === '$:/StoryList') return cb()
-  if (tiddler.fields['draft.of']) return cb() // 
+  if (tiddler.fields['draft.of']) return cb() // Drafts from other machines
+                                              // weren't getting deleted
   this.archive.ready(() => {
     this.saveMetadata(tiddler, err => {
       if (err) return cb(err)
