@@ -31,19 +31,16 @@ const prefix = css`
       border: 1px solid var(--color-neutral-20);
       border-radius: 0.5rem;
       margin: 0 0 0.5rem 0;
-      padding: 0 0.5rem;
+      padding: 0 2rem 0 0.5rem;
       min-height: 3rem;
       position: relative;
       cursor: pointer;
       font-size: 1.2rem;
       background-color: var(--color-white);
       display: flex;
+      align-items: center;
 
-      .link {
-        margin: 1rem 0.5rem;
-      }
-
-      span {
+      .key {
         font-size: 12px;
         font-family: monospace;
         line-height: 1rem;
@@ -51,6 +48,12 @@ const prefix = css`
         top: 0.1rem;
         right: 0.3rem;
         pointer-events: none;
+      }
+
+      .settings {
+        position: absolute;
+        bottom: 0.3rem;
+        right: 0.3rem;
       }
     }
     .solo {
@@ -104,18 +107,30 @@ function mainView (state, emit) {
   emit('DOMTitleChange', 'Dat TiddlyWiki')
   const documents = state.documents.map(doc => {
     return html`
-      <li onclick=${click} onkeydown=${keydown} tabindex="0" role="button">
-        <span>${prettyHash(doc.key)}</span>
-        <a href="/doc/${doc.key}" class="link" tabindex="-1">${doc.name}</a>
+      <li onclick=${openTiddlyWiki} onkeydown=${keydown} tabindex="0" role="button">
+        <span class="link">${doc.name}</span>
+        <span class="key">${prettyHash(doc.key)}</span>
+        <span class="settings" onclick={click} onkeydown=${keydown}>
+          <a href="/doc/${doc.key}" class="link">
+            <img src="/img/baseline-settings-20px.svg">
+          </a>
+        </span>
       </li>
     `
+    
+    function openTiddlyWiki (event) {
+      const url = `/doc/${doc.key}/tw`
+      location.href = url
+    }
+
     function click (event) {
       const link = event.target.querySelector('a')
       if (link) link.click()
     }
+
     function keydown (event) {
       if (event.key === ' ' || event.key === 'Enter') {
-        event.target.querySelector('a').click()
+        event.target.click()
       }
     }
   })
